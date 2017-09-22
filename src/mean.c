@@ -7,12 +7,6 @@
 
 #include <mean.h>
 
-typedef struct {
-   size_t sum;
-   /*size_t cnt;*/
-   double res;
-} mean_t;
-
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_mean (void *restrict _dest, size_t nval) {
    mean_t *restrict dest = (mean_t *restrict) _dest;

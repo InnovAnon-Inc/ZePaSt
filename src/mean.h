@@ -5,7 +5,17 @@
 extern "C" {
 #endif
 
+#include <sys/types.h>
+
+#include <glitter.h>
+
 #include <zepast.h>
+
+typedef struct {
+   size_t sum;
+   /*size_t cnt;*/
+   double res;
+} mean_t;
 
 void init_mean (void *restrict mean, size_t nval)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
