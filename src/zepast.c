@@ -7,20 +7,49 @@
 
 #include <zepast.h>
 
-__attribute__ ((leaf, nonnull (1, 3), nothrow, warn_unused_result))
-void zepast (
-   stat_cbs_t cbs[], size_t ncb,
+__attribute__ ((leaf, nonnull (1, 3), nothrow))
+void stats (
+   stats_t s[],      size_t nstats,
    unigram_t vals[], size_t nval) {
-   size_t vali, cbi;
+   size_t si, vi;
+   /* presumably si loop can be parallelized */
+   for (si = 0; si != nstats; si++)
+      s[si].init (s[si].stats, nval);
+   /* vi loop cannot necessarily be parallelized,
+    * because diffs() */
+   for (vi = 0; vi != nval; vi++)
+      for (si = 0; si != nstats; si++)
+         s[si].update (s[si].stats, vals[vi], nval);
+   for (si = 0; si != nstats; si++)
+      s[si].finish (s[si].stats, nval);
+}
 
-   for (cbi = 0; cbi != ncb; cbi++)
-      cbs[i].init (cbs[i].res);
+TODO (stats2() fully parallelize-able)
 
-   /* TODO parallelize? */
+__attribute__ ((leaf, nonnull (1, 3), nothrow))
+void zepast (
+   zepast_t z[],     size_t nzepast,
+   unigram_t vals[], size_t nval) {
+   size_t zi, zsi, vi;
+   /*
+   for (zi = 0; zi != nzepast; zi++)
+      for (zsi = 0; zsi != z[zi]->nstats; zsi++)
+         z[zi][zsi].init (z[zi][zsi].stats, nval);
    for (vali = 0; vali != nval; vali++)
-      for (cbi = 0; cbi != ncb; cbi++)
-         cbs[i].update (cbs[i].res, vals[vali]);
-
-   for (cbi = 0; cbi != ncb; cbi++)
-      cbs[i].finish (cbs[i].res);
+      for (zi = 0; zi != nzepast; zi++)
+         for (zsi = 0; zsi != z[zi]->nstats; zsi++)
+            z[zi][zsi].update (z[zi][zsi].stats, vals[vali], nval);
+   for (zi = 0; zi != nzepast; zi++)
+      for (zsi = 0; zsi != z[zi]->nstats; zsi++)
+         z[zi][zsi].finish (z[zi][zsi].stats, nval);
+   */
+   for (zi = 0; zi != nzepast; zi++) {
+      for (zsi = 0; zsi != z[zi]->nstats; zsi++)
+         z[zi][zsi].init (z[zi][zsi].stats, nval);
+      for (vali = 0; vali != nval; vali++)
+         for (zsi = 0; zsi != z[zi]->nstats; zsi++)
+            z[zi][zsi].update (z[zi][zsi].stats, vals[vali], nval);
+      for (zsi = 0; zsi != z[zi]->nstats; zsi++)
+         z[zi][zsi].finish (z[zi][zsi].stats, nval);
+   }
 }

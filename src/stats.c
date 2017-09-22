@@ -7,18 +7,29 @@
 
 #include <stats.h>
 
+typedef struct {
+   size_t sum;
+   /*size_t cnt;*/
+   double res;
+} mean_t;
+
 __attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result))
-void init_mean (stat_t *restrict dest) {
-   dest->n = 0;
+void init_mean (void *restrict _dest, size_t nval) {
+   mean_t *restrict dest = (mean_t *restrict) _dest;
+   dest->sum = 0;
+   /*dest->cnt = 0;*/
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result))
-void update_mean (stat_t *restrict dest, unigram_t val) {
+void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
+   mean_t *restrict dest = (mean_t *restrict) _dest;
    TODO (check overflow)
-   dest->n += val;
+   dest->sum += val;
+   /*dest->cnt++;*/
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result))
-void finish_mean (stat_t *restrict dest) {
-   dest->d = (double) (dest->n) / ?;
+void finish_mean (void *restrict _dest, size_t nval) {
+   mean_t *restrict dest = (mean_t *restrict) _dest;
+   dest->res = (double) (dest->sum) / (double) (/*dest->cnt*/nval);
 }
