@@ -11,7 +11,7 @@
 #include <unistd.h>
 
 #include <zepast.h>
-#include <stats.h>
+#include <mean.h>
 
 
 __attribute__ ((nothrow, warn_unused_result))
