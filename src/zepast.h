@@ -17,24 +17,33 @@ extern "C" {
    void (*cb) ();
 } stats_clj_t;*/
 
-typedef __attribute__ ((nonnull (1, 3)))
-void all_statss_t (
-   zepast_t z[], size_t nzepast,
-   unigram_t vals[], size_t nval) ;
-
 /* modular collections of stats */
 typedef struct {
    /*stats_clj_t *restrict statss;*/
    stats_t *restrict statss;
    size_t nstats;
-   all_statss_t all_statss;
    TODO (mask output)
 } zepast_t;
+
+typedef __attribute__ ((nonnull (1, 3)))
+void all_statss_t (
+   zepast_t z[], size_t nzepast,
+   unigram_t vals[], size_t nval) ;
+
+TODO (something)
 
 void zepast (
    zepast_t z[],     size_t nzepast,
    unigram_t vals[], size_t nval)
 __attribute__ ((leaf, nonnull (1, 3), nothrow)) ;
+
+
+
+typedef struct {
+   zepast_t *restrict zepasts;
+   size_t nzepast;
+   all_statss_t all_statss;
+} zepast_clj_t;
 
 #ifdef __cplusplus
 }
