@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
 #include <sys/types.h>
 
 #include <glitter.h>
@@ -44,14 +45,15 @@ void stats (
    unigram_t vals[], size_t nval)
 __attribute__ ((leaf, nonnull (1, 3), nothrow)) ;
 
-typedef struct {
+/*typedef struct {
    stats_t stats;
    void (*cb) ();
-} stats_clj_t;
+} stats_clj_t;*/
 
 /* modular collections of stats */
 typedef struct {
-   stats_clj_t *restrict statss;
+   /*stats_clj_t *restrict statss;*/
+   stats_t *restrict statss;
    size_t nstats;
    TODO (mask output)
 } zepast_t;

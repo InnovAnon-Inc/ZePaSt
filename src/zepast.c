@@ -44,12 +44,12 @@ void zepast (
          z[zi][zsi].finish (z[zi][zsi].stats, nval);
    */
    for (zi = 0; zi != nzepast; zi++) {
-      for (zsi = 0; zsi != z[zi]->nstats; zsi++)
-         z[zi][zsi].init (z[zi][zsi].stats, nval);
+      for (zsi = 0; zsi != z[zi].nstats; zsi++)
+         z[zi][zsi].init (z[zi].statss[zsi].stats, nval);
       for (vali = 0; vali != nval; vali++)
-         for (zsi = 0; zsi != z[zi]->nstats; zsi++)
-            z[zi][zsi].update (z[zi][zsi].stats, vals[vali], nval);
-      for (zsi = 0; zsi != z[zi]->nstats; zsi++)
-         z[zi][zsi].finish (z[zi][zsi].stats, nval);
+         for (zsi = 0; zsi != z[zi].nstats; zsi++)
+            z[zi][zsi].update (z[zi].statss[zsi].stats, vals[vali], nval);
+      for (zsi = 0; zsi != z[zi].nstats; zsi++)
+         z[zi][zsi].finish (z[zi].statss[zsi].stats, nval);
    }
 }
