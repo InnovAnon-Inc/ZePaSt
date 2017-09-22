@@ -53,7 +53,7 @@ void zepast (
          z[zi].statss[zsi].init (z[zi].statss[zsi].stats, nval);
       for (vali = 0; vali != nval; vali++)
          for (zsi = 0; zsi != z[zi].nstats; zsi++)
-            z[zi].statss[zsi].update (z[zi].statss[zsi].stats, vals[vali], nval);
+            z[zi].statss[zsi].update (z[zi].statss[zsi].stats, vals[vi], nval);
       for (zsi = 0; zsi != z[zi].nstats; zsi++)
          z[zi].statss[zsi].finish (z[zi].statss[zsi].stats, nval);
 	#pragma GCC diagnostic pop
