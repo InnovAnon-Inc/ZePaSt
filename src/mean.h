@@ -1,5 +1,5 @@
-#ifndef _STATS_H_
-#define _STATS_H_
+#ifndef _MEAN_H_
+#define _MEAN_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,4 +18,4 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 }
 #endif
 
-#endif /* _STATS_H_ */
+#endif /* _MEAN_H_ */
