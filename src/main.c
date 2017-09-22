@@ -5,6 +5,7 @@
 #define _POSIX_C_SOURCE 200112L
 #define __STDC_VERSION__ 200112L
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -17,9 +18,12 @@ int main (void) {
    zepast_t z;
    stats_t ss[1];
    mean_t mean;
-   unigram_t vals[]
+   char const str[] = "Hello, World!";
+   unigram_t vals[sizeof (str)];
    z.statss = ss;
    z.nstats = ARRSZ (ss);
+
+   (void) memcpy (vals, str, sizeof (str));
 
    ss[0].init   = init_mean;
    ss[0].update = update_mean;
