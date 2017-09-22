@@ -43,6 +43,8 @@ void zepast (
       for (zsi = 0; zsi != z[zi]->nstats; zsi++)
          z[zi][zsi].finish (z[zi][zsi].stats, nval);
    */
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
    for (zi = 0; zi != nzepast; zi++) {
       for (zsi = 0; zsi != z[zi].nstats; zsi++)
          z[zi][zsi].init (z[zi].statss[zsi].stats, nval);
@@ -51,5 +53,6 @@ void zepast (
             z[zi][zsi].update (z[zi].statss[zsi].stats, vals[vali], nval);
       for (zsi = 0; zsi != z[zi].nstats; zsi++)
          z[zi][zsi].finish (z[zi].statss[zsi].stats, nval);
+	#pragma GCC diagnostic pop
    }
 }
