@@ -24,20 +24,19 @@ typedef __attribute__ ((nonnull (1)))
 void (*finish_stat_t) (
    void *restrict stats, size_t nval) ;
 
-typedef __attribute__ ((nonnull (1, 3)))
-void (*all_stats_t) (
-   stats_t s[], size_t nstats,
-   unigram_t vals[], size_t nval) ;
-
 typedef struct {
    init_stat_t   init;
    update_stat_t update;
    finish_stat_t finish;
-   all_stats_t all_stats;
    void *restrict stats;
    /*size_t nstat; if size is dynamic */
    TODO (mask output)
 } stats_t;
+
+typedef __attribute__ ((nonnull (1, 3)))
+void (*all_stats_t) (
+   stats_t s[], size_t nstats,
+   unigram_t vals[], size_t nval) ;
 
 TODO (breakout to separate source file)
 
@@ -45,6 +44,14 @@ void stats (
    stats_t s[],      size_t nstats,
    unigram_t vals[], size_t nval)
 __attribute__ ((leaf, nonnull (1, 3), nothrow)) ;
+
+
+
+typedef struct {
+   stats_t *restrict stats;
+   size_t nstats;
+   all_stats_t all_stats;
+} stats_clj_t;
 
 #ifdef __cplusplus
 }
