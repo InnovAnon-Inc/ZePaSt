@@ -26,7 +26,7 @@ typedef struct {
 } zepast_t;
 
 typedef __attribute__ ((nonnull (1, 3)))
-void all_statss_t (
+void (*all_statss_t) (
    zepast_t z[], size_t nzepast,
    unigram_t vals[], size_t nval) ;
 
