@@ -69,7 +69,7 @@ int isqrt_orig0 (int x) {
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_orig1 (size_t N) {
    size_t a = 1;
-   size_t b = ceil ((size_t) MSB (N) / 2);
+   size_t b = (size_t) ceil ((double) MSB (N) / 2);
    while (abs (a - b) > 1) {
       b = N / a;
       a = (a + b) / 2;
