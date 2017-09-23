@@ -21,6 +21,12 @@ __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 size_t isqrt_orig1 (size_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
+size_t isqrt_orig2 (size_t a)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+
+size_t isqrt_orig3 (size_t a)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+
 uint_fast16_t isqrt (uint_fast64_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 

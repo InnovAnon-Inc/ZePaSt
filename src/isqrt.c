@@ -64,11 +64,23 @@ int isqrt_orig0 (int x) {
 }
 
 #ifndef MSB
-#define MSB(N) (ffsl ((long) (N)))
+/*#define MSB(N) (ffsl ((long) (N)))*/
+#define MSB(N) __builtin_ffs ((int) (N))
 #endif
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_orig1 (size_t N) {
+   size_t a = 1;
+   size_t b = N;
+   while (abs (a - b) > 1) {
+      b = N / a;
+      a = (a + b) / 2;
+   }
+   return a;
+}
+
+__attribute__ ((const, leaf, nothrow, warn_unused_result))
+size_t isqrt_orig2 (size_t N) {
    size_t a = 1;
    long tmpl = MSB (N);
    double tmp = ceil ((double) tmpl / 2);
@@ -78,6 +90,12 @@ size_t isqrt_orig1 (size_t N) {
       a = (a + b) / 2;
    }
    return a;
+}
+
+__attribute__ ((const, leaf, nothrow, warn_unused_result))
+size_t isqrt_orig3 (size_t N) {
+   double ret = sqrt ((double) N);
+   return (size_t) ret;
 }
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
@@ -108,7 +126,7 @@ size_t isqrt_size_t (size_t a) {
    /*uint_fast16_t ret = isqrt ((uint_fast64_t) a);*/
    /*unsigned short ret = isqrt_orig ((unsigned long) a);*/
    /*int ret = isqrt_orig0 ((int) a);*/
-   size_t ret = isqrt_orig1 (a);
+   size_t ret = isqrt_orig3 (a);
    return (size_t) ret;
 #else
    size_t rem = 0;
