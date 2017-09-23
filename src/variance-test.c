@@ -31,6 +31,7 @@ int main (void) {
 #ifndef NDEBUG
    printf ("ARRSZ (vals):%d\n", (int) ARRSZ (vals)); fflush (stdout);
 #endif
+	#pragma GCC ivdep
    for (vi = 0; vi != ARRSZ (vals); vi++) {
       vals[vi] = (unigram_t) str[vi];
 #ifndef NDEBUG

@@ -25,6 +25,7 @@ int main (void) {
 
    /*(void) memcpy (vals, str, sizeof (str));*/
    TODO (check overflow)
+	#pragma GCC ivdep
    for (vi = 0; vi != ARRSZ (vals); vi++)
       vals[vi] = (unigram_t) str[vi];
 

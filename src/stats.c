@@ -15,6 +15,7 @@ void init_stats (
    stats_t s[], size_t nstat,
    size_t nval) {
    size_t si;
+	#pragma GCC ivdep
    for (si = 0; si != /*s->*/nstat; s++)
       s->init (s->stats[si], nval);
 }
@@ -24,6 +25,7 @@ void update_stats (
    stats_t s[], size_t nstat,
    unigram_t val, size_t nval) {
    size_t si;
+	#pragma GCC ivdep
    for (si = 0; si != /*s->*/nstat; s++)
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
@@ -36,6 +38,7 @@ void updates_stats0 (
    stats_t *restrict s,
    unigram_t vals[], size_t nval) {
    size_t si;
+	#pragma GCC ivdep
    for (si = 0; si != s->nstat; s++)
       s->updates (s->stats[si], vals, nval);
 }
@@ -45,6 +48,7 @@ void updates_stats1 (
    stats_t *restrict s,
    unigram_t vals[], size_t nval) {
    size_t vi;
+	#pragma GCC ivdep
    for (vi = 0; vi != nval; vi++)
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
