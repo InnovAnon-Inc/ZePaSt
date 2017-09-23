@@ -11,6 +11,8 @@
 #include <stdio.h>
 #endif
 
+#include <string.h>
+
 #include <isqrt.h>
 
 /* https://stackoverflow.com/questions/4930307/fastest-way-to-get-the-integer-part-of-sqrtn */
@@ -58,10 +60,14 @@ int isqrt_orig0 (int x) {
     return (int)((float)v.x);
 }
 
+#ifndef MSB
+#define MSB(N) ffsl ((long) (N))
+#endif
+
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_orig1 (size_t N) {
    size_t a = 1;
-   size_t b = N;
+   size_t b = ceil ((size_t) MSB (N) / 2);
    while (abs (a - b) > 1) {
       b = N / a;
       a = (a + b) / 2;
