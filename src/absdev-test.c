@@ -12,8 +12,8 @@
 #include <string.h>
 #include <unistd.h>
 
-TODO (median.h)
 #include <mean.h>
+TODO (median.h)
 #include <absdev.h>
 
 __attribute__ ((nothrow, warn_unused_result))
