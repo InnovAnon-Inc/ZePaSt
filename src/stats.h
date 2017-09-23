@@ -5,53 +5,55 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
-#include <sys/types.h>
-
-#include <glitter.h>
-
-typedef uint8_t unigram_t;
+#include <stat.h>
 
 typedef __attribute__ ((nonnull (1)))
-void (*init_stat_t) (
-   void *restrict stats, size_t nval) ;
+void (*init_stats_t) (
+   stats_t *restrict stat, size_t nval) ;
 
 typedef __attribute__ ((nonnull (1)))
-void (*update_stat_t) (
-   void *restrict stats, unigram_t val, size_t nval) ;
+void (*update_stats_t) (
+   stats_t *restrict stat, unigram_t val, size_t nval) ;
+
+/*typedef __attribute__ ((nonnull (1, 2)))
+void (*updates_stats_t) (
+   stats_t *restrict stat, unigram_t val[], size_t nval) ;*/
 
 typedef __attribute__ ((nonnull (1)))
-void (*finish_stat_t) (
-   void *restrict stats, size_t nval) ;
+void (*finish_stats_t) (
+   stats_t *restrict stat, size_t nval) ;
+
+TODO (validate(stats_t*) functions)
 
 typedef struct {
-   init_stat_t   init;
-   update_stat_t update;
-   finish_stat_t finish;
-   void *restrict stats;
-   /*size_t nstat; if size is dynamic */
-   TODO (mask output)
+   init_stats_t   init;
+   update_stats_t update;
+   /*updates_stats_t updates;*/
+   finish_stats_t finish;
+   stat_t *restrict stats;
+   size_t nstats;
 } stats_t;
 
-typedef __attribute__ ((nonnull (1, 3)))
-void (*all_stats_t) (
-   stats_t s[], size_t nstats,
-   unigram_t vals[], size_t nval) ;
+void init_stats (stats_t *restrict s, size_t nval)
+__attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-TODO (breakout to separate source file)
+void update_stats (
+   stats_t *restrict s,
+   unigram_t val, size_t nval)
+__attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void stats (
-   stats_t s[],      size_t nstats,
-   unigram_t vals[], size_t nval)
-__attribute__ ((leaf, nonnull (1, 3), nothrow)) ;
+/*void updates_stats0 (
+   stats_t *restrict s,
+   unigram_t val[], size_t nval)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
+void updates_stats1 (
+   stats_t *restrict s,
+   unigram_t val[], size_t nval)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;*/
 
-
-typedef struct {
-   stats_t *restrict stats;
-   size_t nstats;
-   all_stats_t all_stats;
-} stats_clj_t;
+void finish_stats (stats_t *restrict s, size_t nval)
+__attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 #ifdef __cplusplus
 }

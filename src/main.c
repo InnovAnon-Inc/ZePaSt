@@ -16,22 +16,34 @@
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   zepast_t z;
+   /*zepast_t z;*/
    stats_t ss[1];
+   stat_t s[1];
    mean_t mean;
    char const str[] = "Hello, World!";
    unigram_t vals[sizeof (str)];
-   z.statss = ss;
-   z.nstats = ARRSZ (ss);
+   size_t vi;
+
+   /*z.statss = ss;*/
+   /*z.nstats = ARRSZ (ss);*/
 
    (void) memcpy (vals, str, sizeof (str));
 
-   ss[0].init   = init_mean;
-   ss[0].update = update_mean;
-   ss[0].finish = finish_mean;
-   ss[0].stats  = &mean;
+   s[0].init   = init_mean;
+   s[0].update = update_mean;
+   s[0].finish = finish_mean;
+   s[0].stat   = &mean;
 
-   zepast (&z, (size_t) 1, vals, ARRSZ (vals));
+   ss[0].init   = init_stat;
+   ss[0].update = update_stat;
+   ss[0].finish = finish_stat;
+   ss[0].stats  = s;
+   ss[0].nstat  = ARRSZ (s);
+
+   init_stats   (ss[0], ARRSZ (vals));
+   for (vi = 0; vi != ARRSZ (vals); vi++)
+      update_stats (ss[0], vals[vi], ARRSZ (vals));
+   finish_stats (ss[0], vals, ARRSZ (vals));
 
    (void) printf ("mean:%d,%g\n", (int) (mean.sum), mean.res);
    return EXIT_SUCCESS;
