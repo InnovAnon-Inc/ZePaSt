@@ -39,12 +39,14 @@ int main (void) {
       act3 = isqrt_orig1 (n);
       act4 = isqrt_orig2 (n);
       act5 = isqrt_orig3 (n);
+      printf ("n:%d\n", (int), n);
       printf ("act0:%d\n", (int) act0);
       printf ("act1:%d\n", (int) act1);
       printf ("act2:%d\n", (int) act2);
       printf ("act3:%d\n", (int) act3);
       printf ("act4:%d\n", (int) act4);
       printf ("act5:%d\n", (int) act5);
+      puts ("");
 
       act = isqrt_size_t (n);
       error_check (act != (size_t) exp) {
