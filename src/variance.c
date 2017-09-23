@@ -15,7 +15,6 @@ void init_variance (void *restrict _dest, size_t nval) {
    dest->sum = 0;
    if (nval >= 30) dest->df  = nval - 1;
    else            dest->df  = nval;
-   /*dest->cnt = 0;*/
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))

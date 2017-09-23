@@ -13,11 +13,10 @@ __attribute__ ((leaf, nonnull (1), nothrow))
 void init_absdev (void *restrict _dest, size_t nval) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
    dest->sum = 0;
-   if (nval >= 30) dest->df  = nval - 1;
-   else            dest->df  = nval;
-   /*dest->cnt = 0;*/
 }
 
+/* if the ct were an integer,
+ * then we could use int abs() here */
 __attribute__ ((leaf, nonnull (1), nothrow))
 void update_absdev (void *restrict _dest, unigram_t val, size_t nval) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
@@ -25,12 +24,11 @@ void update_absdev (void *restrict _dest, unigram_t val, size_t nval) {
    dest->sum += abs (dest->ct - val);
 }
 
-/* if the ct were an integer,
- * then we could use int sqrt() here */
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_absdev (void *restrict _dest, size_t nval) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
-   dest->res = dest->sum / (double) (dest->df);
+   TODO (compute median deviation)
+   dest->res = dest->sum / (double) nval;
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))

@@ -14,9 +14,7 @@ extern "C" {
 typedef struct {
    double ct; /* central tendency */
    double sum; /* TODO use kahan's summation algo for floats */
-   /*size_t cnt;*/
    double res;
-   size_t df;
 } absdev_t;
 
 void init_absdev (void *restrict absdev, size_t nval)
