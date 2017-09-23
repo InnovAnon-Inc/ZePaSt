@@ -8,7 +8,7 @@
 #include <stats.h>
 
 /* override this with a version that uses memset and no loop */
-__attribute__ ((leaf, nonnull (1), nothrow)) ;
+__attribute__ ((leaf, nonnull (1), nothrow))
 void init_stats (
    stats_t s[], size_t nstat,
    size_t nval) {
