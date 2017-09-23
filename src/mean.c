@@ -27,3 +27,15 @@ void finish_mean (void *restrict _dest, size_t nval) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    dest->res = (double) (dest->sum) / (double) (/*dest->cnt*/nval);
 }
+
+__attribute__ ((nonnull (1, 2), nothrow))
+void ez_mean (
+   mean_t *restrict mean,
+   unigram_t const vals[], size_t nval) {
+   stat_t s;
+   s.init   = init_mean;
+   s.update = update_mean;
+   s.finish = finish_mean;
+   s.stat   = mean;
+   ez_stat (&s, vals, nval);
+}

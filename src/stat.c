@@ -53,7 +53,7 @@ void finish_stat (stat_t *restrict s, size_t nval) {
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_stat (
    stat_t *restrict s,
-   unigram_t vals[], size_t nval) {
+   unigram_t const vals[], size_t nval) {
    size_t vi;
    init_stat (s, nval);
    for (vi = 0; vi != nval; vi++)

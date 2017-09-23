@@ -26,6 +26,11 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_mean (void *restrict mean, size_t nval)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void ez_mean (
+   mean_t *restrict mean,
+   unigram_t const vals[], size_t nval)
+__attribute__ ((nonnull (1, 2), nothrow)) ;
+
 #ifdef __cplusplus
 }
 #endif
