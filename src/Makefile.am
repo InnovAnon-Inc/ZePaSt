@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libzepast.la libmean.la libvariance.la
+lib_LTLIBRARIES = libzepast.la libmean.la libvariance.la libabsdev.la
 
 libzepast_la_SOURCES = zepast.c stats.c stat.c
 libzepast_la_LIBADD = -lm
@@ -9,21 +9,30 @@ libmean_la_LIBADD = -lzepast -lm
 libvariance_la_SOURCES = variance.c
 libvariance_la_LIBADD = -lzepast -lm
 
-include_HEADERS = zepast.h stats.h stat.h mean.h variance.h
+libabsdev_la_SOURCES = absdev.c
+libabsdev_la_LIBADD = -lzepast -lm
 
-bin_PROGRAMS = zepast stat-test mean-test variance-test
+include_HEADERS = zepast.h stats.h stat.h mean.h variance.h absdev.h
+
+# variance/stddev
+# absdev/MAD
+bin_PROGRAMS = zepast stat-test mean variance absdev
 
 zepast_SOURCES = main.c
-zepast_LDADD = libzepast.la libmean.la libvariance.la -lm
+zepast_LDADD = libzepast.la libmean.la libvariance.la libabsdev.la -lm
 
 stat_test_SOURCES = stat-test.c
-stat_test_LDADD = libzepast.la libmean.la libvariance.la -lm
+stat_test_LDADD = libzepast.la libmean.la libvariance.la libabsdev.la -lm
 
-mean_test_SOURCES = mean-test.c
-mean_test_LDADD = libzepast.la libmean.la -lm
+mean_SOURCES = mean-test.c
+mean_LDADD = libzepast.la libmean.la -lm
 
-variance_test_SOURCES = variance-test.c
-variance_test_LDADD = libzepast.la libvariance.la libmean.la -lm
+variance_SOURCES = variance-test.c
+variance_LDADD = libzepast.la libvariance.la libmean.la -lm
+
+absdev_SOURCES = absdev-test.c
+# TODO libmedian.la
+absdev_LDADD = libzepast.la libabsdev.la libmean.la -lm
 
 # trololol
 #dist_doc_DATA += src/Makefile.am
