@@ -19,6 +19,8 @@
 #include <isqrt.h>
 
 /* https://stackoverflow.com/questions/4930307/fastest-way-to-get-the-integer-part-of-sqrtn */
+
+#ifndef NDEBUG
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 unsigned short isqrt_orig (unsigned long a) {
     unsigned long rem = 0;
@@ -91,6 +93,7 @@ size_t isqrt_orig2 (size_t N) {
    }
    return a;
 }
+#endif
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_orig3 (size_t N) {
@@ -98,6 +101,7 @@ size_t isqrt_orig3 (size_t N) {
    return (size_t) ret;
 }
 
+#ifndef NDEBUG
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 uint_fast16_t isqrt (uint_fast64_t a) {
    uint_fast64_t rem = 0;
@@ -119,6 +123,7 @@ uint_fast16_t isqrt (uint_fast64_t a) {
 
    return (uint_fast16_t) (root >> 1);
 }
+#endif
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_size_t (size_t a) {

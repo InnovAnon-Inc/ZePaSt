@@ -12,6 +12,7 @@ extern "C" {
 
 #include <stat.h>
 
+#ifndef NDEBUG
 unsigned short isqrt_orig (unsigned long a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
@@ -23,12 +24,15 @@ __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
 size_t isqrt_orig2 (size_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+#endif
 
 size_t isqrt_orig3 (size_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
+#ifndef NDEBUG
 uint_fast16_t isqrt (uint_fast64_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+#endif
 
 size_t isqrt_size_t (size_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;

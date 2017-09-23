@@ -24,15 +24,18 @@ int main (void) {
    /*for (n = 0; n != maxn; n++) {*/
    for (n = maxn - 1; n != SIZE_MAX; n--) {
       double exp;
+#ifndef NDEBUG
       uint_fast16_t act0;
       unsigned short act1;
       int act2;
       size_t act3;
       size_t act4;
       size_t act5;
+#endif
       size_t act;
       exp = sqrt ((double) n);
 
+#ifndef NDEBUG
       act0 = isqrt ((uint_fast64_t) n);
       act1 = isqrt_orig ((unsigned long) n);
       act2 = isqrt_orig0 ((int) n);
@@ -47,6 +50,7 @@ int main (void) {
       printf ("act4:%d\n", (int) act4);
       printf ("act5:%d\n", (int) act5);
       puts ("");
+#endif
 
       act = isqrt_size_t (n);
       error_check (act != (size_t) exp) {
