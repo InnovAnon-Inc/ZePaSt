@@ -3,9 +3,9 @@ include_HEADERS =
 bin_PROGRAMS    =
 
 lib_LTLIBRARIES += libzepast.la
-libzepast_la_SOURCES = zepast.c stats.c stat.c
+libzepast_la_SOURCES = zepast.c stats.c stat.c isqrt.c
 libzepast_la_LIBADD = -lm
-include_HEADERS += zepast.h stats.h stat.h
+include_HEADERS += zepast.h stats.h stat.h isqrt.h
 bin_PROGRAMS += zepast stat-test
 
 lib_LTLIBRARIES += libsum.la
