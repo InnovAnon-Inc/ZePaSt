@@ -35,7 +35,7 @@ int main (void) {
    s[1].init   = init_variance;
    s[1].update = update_mean;
    s[1].finish = finish_mean;
-   s[1].stat   = &mean;
+   s[1].stat   = &variance;
    ez_stat (s + 1, vals, ARRSZ (vals));
 
    (void) printf ("sum:%d\n",      (int) (mean.sum));
