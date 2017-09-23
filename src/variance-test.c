@@ -36,6 +36,7 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
+   mean.cnt = ARRSZ (vals);
    ez_mean (&mean, vals, ARRSZ (vals));
 
 #ifndef NDEBUG
