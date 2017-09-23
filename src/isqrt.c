@@ -17,7 +17,8 @@
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 unsigned short isqrt_orig (unsigned long a) {
     unsigned long rem = 0;
-    int root = 0;
+    /*int root = 0;*/
+    unsigned int root = 0;
     int i;
 
     for (i = 0; i < 16; i++) {
