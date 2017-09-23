@@ -3,10 +3,18 @@ include_HEADERS =
 bin_PROGRAMS    =
 
 lib_LTLIBRARIES += libzepast.la
-libzepast_la_SOURCES = zepast.c stats.c stat.c isqrt.c
+libzepast_la_SOURCES = zepast.c stats.c stat.c
 libzepast_la_LIBADD = -lm
-include_HEADERS += zepast.h stats.h stat.h isqrt.h
+include_HEADERS += zepast.h stats.h stat.h
 bin_PROGRAMS += zepast stat-test
+
+lib_LTLIBRARIES += libisqrt.la
+libisqrt_la_SOURCES = isqrt.c
+#libisqrt_la_LIBADD = -lm
+include_HEADERS += isqrt.h
+bin_PROGRAMS += isqrt
+isqrt_SOURCES = isqrt-test.c
+isqrt_LDADD = libzepast.la libisqrt.la -lm
 
 lib_LTLIBRARIES += libsum.la
 libsum_la_SOURCES = sum.c
@@ -34,11 +42,11 @@ variance_LDADD = libzepast.la libvariance.la libmean.la libsum.la -lm
 
 lib_LTLIBRARIES += libivariance.la
 libivariance_la_SOURCES = ivariance.c
-libivariance_la_LIBADD = -lzepast -lm
+libivariance_la_LIBADD = -lzepast -libisqrt.la -lm
 include_HEADERS += ivariance.h
 bin_PROGRAMS += ivariance
 ivariance_SOURCES = ivariance-test.c
-ivariance_LDADD = libzepast.la libivariance.la libmean.la libsum.la -lm
+ivariance_LDADD = libzepast.la libivariance.la libisqrt.la libmean.la libsum.la -lm
 
 lib_LTLIBRARIES += libabsdev.la
 libabsdev_la_SOURCES = absdev.c
