@@ -49,7 +49,7 @@ int main (void) {
    else                    ivariance.df = ARRSZ (vals);
    ez_ivariance (&ivariance, vals, ARRSZ (vals));
 
-   (void) printf ("ivariance:%g\n", ivariance.sum);
+   (void) printf ("ivariance:%d\n", (int) ivariance.sum);
    (void) printf ("istddev:%g\n",   ivariance.res);
 
    return EXIT_SUCCESS;
