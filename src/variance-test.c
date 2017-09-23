@@ -12,12 +12,14 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <mean.h>
+/*#include <mean.h>*/
+#include <sum.h>
 #include <variance.h>
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   mean_t mean;
+   /*mean_t mean;*/
+   sum_t sum;
    variance_t variance;
 
    char const str[] = "Hello, World!";
@@ -36,15 +38,17 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
-   mean.cnt = ARRSZ (vals);
-   ez_mean (&mean, vals, ARRSZ (vals));
+   /*mean.cnt = ARRSZ (vals);
+   ez_mean (&mean, vals, ARRSZ (vals));*/
+   ez_sum (&sum, vals, ARRSZ (vals));
 
 #ifndef NDEBUG
    (void) printf ("sum:%d\n",  (int) (mean.sum));
    (void) printf ("mean:%g\n", mean.res);
 #endif
 
-   variance.ct = mean.res;
+   /*variance.ct = mean.res;*/
+   variance.ct = (double) sum / (double) ARRSZ (vals);
    if (ARRSZ (vals) >= 30) variance.df = ARRSZ (vals) - 1;
    else                    variance.df = ARRSZ (vals);
    ez_variance (&variance, vals, ARRSZ (vals));
