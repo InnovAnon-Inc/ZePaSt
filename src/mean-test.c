@@ -12,6 +12,8 @@
 
 #include <mean.h>
 
+#define NDEBUG 1
+
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
    mean_t mean;
