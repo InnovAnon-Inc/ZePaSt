@@ -20,9 +20,13 @@ int main (void) {
    mean_t mean;
    variance_t variance;
    char const str[] = "Hello, World!";
-   unigram_t vals[sizeof (str)];
+   unigram_t vals[sizeof (str) * sizeof (char)];
+   size_t vi;
 
-   (void) memcpy (vals, str, sizeof (str));
+   /*(void) memcpy (vals, str, sizeof (str));*/
+   TODO (check overflow)
+   for (vi = 0; vi != ARRSZ (vals); vi++)
+      vals[vi] = (unigram_t) str[vi];
 
    s[0].init   = init_mean;
    s[0].update = update_mean;
