@@ -126,7 +126,7 @@ size_t isqrt_size_t (size_t a) {
    /*uint_fast16_t ret = isqrt ((uint_fast64_t) a);*/
    /*unsigned short ret = isqrt_orig ((unsigned long) a);*/
    /*int ret = isqrt_orig0 ((int) a);*/
-   size_t ret = isqrt_orig3 (a);
+   size_t ret = isqrt_orig0 (a);
    return (size_t) ret;
 #else
    size_t rem = 0;
