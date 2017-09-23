@@ -12,6 +12,9 @@ extern "C" {
 
 #include <stat.h>
 
+unsigned short isqrt_orig (unsigned long a)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+
 uint_fast16_t isqrt (uint_fast64_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
