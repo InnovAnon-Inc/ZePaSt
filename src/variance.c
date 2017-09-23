@@ -33,3 +33,15 @@ void finish_variance (void *restrict _dest, size_t nval) {
    variance_t *restrict dest = (variance_t *restrict) _dest;
    dest->res = sqrt (dest->sum) / (double) (dest->df);
 }
+
+__attribute__ ((nonnull (1, 2), nothrow))
+void ez_variance (
+   variance_t *restrict variance,
+   unigram_t const vals[], size_t nval) {
+   stat_t s;
+   s.init   = init_variance;
+   s.update = update_variance;
+   s.finish = finish_variance;
+   s.stat   = variance;
+   ez_stat (&s, vals, nval);
+}

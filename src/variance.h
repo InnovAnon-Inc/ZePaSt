@@ -28,6 +28,11 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_variance (void *restrict variance, size_t nval)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void ez_variance (
+   variance_t *restrict variance,
+   unigram_t const vals[], size_t nval)
+__attribute__ ((nonnull (1, 2), nothrow)) ;
+
 #ifdef __cplusplus
 }
 #endif
