@@ -22,8 +22,8 @@ stat_test_LDADD = libzepast.la libmean.la libvariance.la -lm
 mean_test_SOURCES = mean-test.c
 mean_test_LDADD = libzepast.la libmean.la -lm
 
-mean_test_SOURCES = variance-test.c
-mean_test_LDADD = libzepast.la libvariance.la -lm
+variance_test_SOURCES = variance-test.c
+variance_test_LDADD = libzepast.la libvariance.la -lm
 
 # trololol
 #dist_doc_DATA += src/Makefile.am
