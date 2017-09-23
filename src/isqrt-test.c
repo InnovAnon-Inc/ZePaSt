@@ -26,7 +26,7 @@ int main (void) {
       exp = sqrt ((double) n);
       act = isqrt (n);
       error_check (act != (size_t) exp) {
-         printf ("n:%d\nact:%g\nexp:%d\n", (int) n, (int) act, exp);
+         printf ("n:%d\nact:%d\nexp:%g\n", (int) n, (int) act, exp);
          return EXIT_FAILURE;
       }
    }
