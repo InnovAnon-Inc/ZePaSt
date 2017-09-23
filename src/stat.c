@@ -50,7 +50,7 @@ void finish_stat (stat_t *restrict s, size_t nval) {
    s->finish (s->stat, nval);
 }
 
-__attribute__ ((nonnull (1, 2), nothrow))
+__attribute__ ((nonnull (1), nothrow))
 void ez_stat (
    stat_t *restrict s,
    unigram_t vals, size_t nval) {
