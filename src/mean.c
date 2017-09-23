@@ -26,7 +26,7 @@ void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
    TODO (check overflow)
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum));
-   printf ("dest->val:%d\n", (int) (dest->val));
+   printf ("dest->val:%d\n", (int) val);
 #endif
    dest->sum += val;
 #ifndef NDEBUG
