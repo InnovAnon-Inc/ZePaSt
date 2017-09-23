@@ -4,6 +4,7 @@
 
 #define _POSIX_C_SOURCE 200809L
 #define __STDC_VERSION__ 200809L
+#define _GNU_SOURCE
 
 #define NDEBUG 1
 
@@ -69,7 +70,8 @@ int isqrt_orig0 (int x) {
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_orig1 (size_t N) {
    size_t a = 1;
-   double tmp = ceil ((double) MSB (N) / 2);
+   long tmpl = MSB (N);
+   double tmp = ceil ((double) tmpl / 2);
    size_t b = (size_t) tmp;
    while (abs (a - b) > 1) {
       b = N / a;
