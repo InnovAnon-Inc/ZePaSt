@@ -37,7 +37,7 @@ void update_absdev (void *restrict _dest, unigram_t val, size_t nval) {
 #ifndef NDEBUG
    printf ("dev:%g\n", dev); fflush (stdout);
 #endif
-   dev = abs (dev);
+   dev = fabs (dev);
 #ifndef NDEBUG
    printf ("|dev|:%g\n", dev); fflush (stdout);
 #endif
