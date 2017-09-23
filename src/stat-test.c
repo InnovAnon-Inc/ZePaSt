@@ -29,7 +29,7 @@ int main (void) {
    s[0].update = update_mean;
    s[0].finish = finish_mean;
    s[0].stat   = &mean;
-   ez_stat (s + 0, vals, ARRSZ (vals);
+   ez_stat (s + 0, vals, ARRSZ (vals));
 
    variance.ct = mean.res;
    s[1].init   = init_variance;
