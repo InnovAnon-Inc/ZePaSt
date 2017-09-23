@@ -14,14 +14,12 @@
 #include <stat.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void init_stat (stat_t *restrict s, size_t nval) {
+void init_stat (stat_t *restrict s) {
    s->init (s->stat, nval);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void update_stat (
-   stat_t *restrict s,
-   unigram_t val, size_t nval) {
+void update_stat (stat_t *restrict s, unigram_t val) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
    s->update (s->stat, val, nval);
@@ -52,7 +50,7 @@ void updates_stat (
 }*/
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void finish_stat (stat_t *restrict s, size_t nval) {
+void finish_stat (stat_t *restrict s) {
    s->finish (s->stat, nval);
 }
 
@@ -68,7 +66,7 @@ void ez_stat (
 #endif
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
-      update_stat (s, vals[vi], nval);
+      update_stat (s, vals[vi]);
 	#pragma GCC diagnostic pop
    }
    finish_stat (s, nval);

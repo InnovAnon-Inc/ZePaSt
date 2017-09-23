@@ -16,11 +16,11 @@
 #include <variance.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void init_variance (void *restrict _dest, size_t nval) {
+void init_variance (void *restrict _dest) {
    variance_t *restrict dest = (variance_t *restrict) _dest;
    dest->sum = 0;
-   if (nval >= 30) dest->df  = nval - 1;
-   else            dest->df  = nval;
+   /*if (nval >= 30) dest->df  = nval - 1;
+   else            dest->df  = nval;*/
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
    printf ("dest->df:%d\n", (int) (dest->df)); fflush (stdout);
@@ -28,7 +28,7 @@ void init_variance (void *restrict _dest, size_t nval) {
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void update_variance (void *restrict _dest, unigram_t val, size_t nval) {
+void update_variance (void *restrict _dest, unigram_t val) {
    variance_t *restrict dest = (variance_t *restrict) _dest;
    double dev;
 #ifndef NDEBUG
@@ -53,7 +53,7 @@ void update_variance (void *restrict _dest, unigram_t val, size_t nval) {
 /* if the ct were an integer,
  * then we could use int sqrt() here */
 __attribute__ ((leaf, nonnull (1), nothrow))
-void finish_variance (void *restrict _dest, size_t nval) {
+void finish_variance (void *restrict _dest) {
    variance_t *restrict dest = (variance_t *restrict) _dest;
    dest->res = sqrt (dest->sum) / (double) (dest->df);
 #ifndef NDEBUG

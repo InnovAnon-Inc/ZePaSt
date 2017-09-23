@@ -17,13 +17,13 @@ typedef struct {
    double res;
 } absdev_t;
 
-void init_absdev (void *restrict absdev, size_t nval)
+void init_absdev (void *restrict absdev)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void update_absdev (void *restrict absdev, unigram_t val, size_t nval)
+void update_absdev (void *restrict absdev, unigram_t val)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void finish_absdev (void *restrict absdev, size_t nval)
+void finish_absdev (void *restrict absdev)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void ez_absdev (

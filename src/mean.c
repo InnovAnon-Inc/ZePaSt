@@ -14,16 +14,17 @@
 #include <mean.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void init_mean (void *restrict _dest, size_t nval) {
+void init_mean (void *restrict _dest) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    dest->sum = 0;
+   dest->cnt = 0;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
 #endif
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
+void update_mean (void *restrict _dest, unigram_t val) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    TODO (check overflow)
 #ifndef NDEBUG
@@ -31,6 +32,7 @@ void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
    printf ("dest->val:%d\n", (int) val); fflush (stdout);
 #endif
    dest->sum += val;
+   dest->cnt ++;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
 #endif
@@ -38,9 +40,9 @@ void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void finish_mean (void *restrict _dest, size_t nval) {
+void finish_mean (void *restrict _dest) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
-   dest->res = (double) (dest->sum) / (double) (/*dest->cnt*/nval);
+   dest->res = (double) (dest->sum) / (double) (dest->cnt);
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
    printf ("dest->res:%g\n", dest->res); fflush (stdout);

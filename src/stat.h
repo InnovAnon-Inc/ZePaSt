@@ -13,20 +13,17 @@ extern "C" {
 typedef uint8_t unigram_t;
 
 typedef __attribute__ ((nonnull (1)))
-void (*init_stat_t) (
-   void *restrict stat, size_t nval) ;
+void (*init_stat_t) (void *restrict stat) ;
 
 typedef __attribute__ ((nonnull (1)))
-void (*update_stat_t) (
-   void *restrict stat, unigram_t val, size_t nval) ;
+void (*update_stat_t) (void *restrict stat, unigram_t val) ;
 
 /*typedef __attribute__ ((nonnull (1, 2)))
 void (*updates_stat_t) (
    void *restrict stat, unigram_t val[], size_t nval) ;*/
 
 typedef __attribute__ ((nonnull (1)))
-void (*finish_stat_t) (
-   void *restrict stat, size_t nval) ;
+void (*finish_stat_t) (void *restrict stat) ;
 
 TODO (validate(stat_t*) functions)
 
@@ -38,12 +35,10 @@ typedef struct {
    void *restrict stat;
 } stat_t;
 
-void init_stat (stat_t *restrict s, size_t nval)
+void init_stat (stat_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void update_stat (
-   stat_t *restrict s,
-   unigram_t val, size_t nval)
+void update_stat (stat_t *restrict s, unigram_t val)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 /* stat_t->updates = updates_stat_naive
@@ -58,7 +53,7 @@ __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;*/
    unigram_t val[], size_t nval)
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;*/
 
-void finish_stat (stat_t *restrict s, size_t nval)
+void finish_stat (stat_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void ez_stat (

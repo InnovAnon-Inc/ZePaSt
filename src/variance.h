@@ -18,13 +18,13 @@ typedef struct {
    size_t df;
 } variance_t;
 
-void init_variance (void *restrict variance, size_t nval)
+void init_variance (void *restrict variance)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void update_variance (void *restrict variance, unigram_t val, size_t nval)
+void update_variance (void *restrict variance, unigram_t val)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void finish_variance (void *restrict variance, size_t nval)
+void finish_variance (void *restrict variance)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void ez_variance (

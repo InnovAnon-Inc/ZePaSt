@@ -44,6 +44,8 @@ int main (void) {
 #endif
 
    variance.ct = mean.res;
+   if (ARRSZ (vals) >= 30) variance.df = mean.sum - 1;
+   else                    variance.df = mean.sum;
    ez_variance (&variance, vals, ARRSZ (vals));
 
    (void) printf ("variance:%g\n", variance.sum);

@@ -13,13 +13,13 @@ extern "C" {
 
 typedef size_t sum_t;
 
-void init_sum (void *restrict sum, size_t nval)
+void init_sum (void *restrict sum)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void update_sum (void *restrict sum, unigram_t val, size_t nval)
+void update_sum (void *restrict sum, unigram_t val)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void finish_sum (void *restrict sum, size_t nval)
+void finish_sum (void *restrict sum)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void ez_sum (

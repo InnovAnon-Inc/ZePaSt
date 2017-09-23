@@ -14,7 +14,7 @@
 #include <sum.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void init_sum (void *restrict _dest, size_t nval) {
+void init_sum (void *restrict _dest) {
    sum_t *restrict dest = (sum_t *restrict) _dest;
    *dest = 0;
 #ifndef NDEBUG
@@ -23,7 +23,7 @@ void init_sum (void *restrict _dest, size_t nval) {
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void update_sum (void *restrict _dest, unigram_t val, size_t nval) {
+void update_sum (void *restrict _dest, unigram_t val) {
    sum_t *restrict dest = (sum_t *restrict) _dest;
    TODO (check overflow)
 #ifndef NDEBUG
@@ -36,7 +36,7 @@ void update_sum (void *restrict _dest, unigram_t val, size_t nval) {
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void finish_sum (void *restrict _dest, size_t nval) {
+void finish_sum (void *restrict _dest) {
    sum_t *restrict dest = (sum_t *restrict) _dest;
 #ifndef NDEBUG
    printf ("sum:%d\n", (int) (*dest)); fflush (stdout);

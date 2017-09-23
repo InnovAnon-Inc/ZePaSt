@@ -16,7 +16,7 @@
 #include <absdev.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void init_absdev (void *restrict _dest, size_t nval) {
+void init_absdev (void *restrict _dest) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
    dest->sum = 0;
 #ifndef NDEBUG
@@ -27,7 +27,7 @@ void init_absdev (void *restrict _dest, size_t nval) {
 /* if the ct were an integer,
  * then we could use int abs() here */
 __attribute__ ((leaf, nonnull (1), nothrow))
-void update_absdev (void *restrict _dest, unigram_t val, size_t nval) {
+void update_absdev (void *restrict _dest, unigram_t val) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
    double dev;
 #ifndef NDEBUG
@@ -50,7 +50,7 @@ void update_absdev (void *restrict _dest, unigram_t val, size_t nval) {
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void finish_absdev (void *restrict _dest, size_t nval) {
+void finish_absdev (void *restrict _dest) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
    TODO (compute median deviation)
    dest->res = dest->sum / (double) nval;
