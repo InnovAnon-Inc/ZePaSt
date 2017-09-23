@@ -24,6 +24,9 @@ __attribute__ ((leaf, nonnull (1), nothrow))
 void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    TODO (check overflow)
+#ifndef NDEBUG
+   printf ("dest->sum:%d\n", (int) (dest->sum));
+#endif
    dest->sum += val;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum));
