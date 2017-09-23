@@ -38,6 +38,27 @@ unsigned short isqrt_orig (unsigned long a) {
 }
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
+int isqrt_orig0 (int x) {
+   TODO (check overflow)
+   union { float f; int32_t x } v;
+
+    // convert to float
+    v.f = (float)x;
+
+    // fast aprox sqrt
+    //  assumes float is in IEEE 754 single precision format
+    //  assumes int is 32 bits
+    //  b = exponent bias
+    //  m = number of mantissa bits
+    v.x  -= 1 << 23; // subtract 2^m
+    v.x >>= 1;       // divide by 2
+    v.x  += 1 << 29; // add ((b + 1) / 2) * 2^m
+
+    // convert to int
+    return (int)((float)v.x);
+}
+
+__attribute__ ((const, leaf, nothrow, warn_unused_result))
 uint_fast16_t isqrt (uint_fast64_t a) {
    uint_fast64_t rem = 0;
    uint_fast32_t root = 0;
@@ -63,7 +84,8 @@ __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_size_t (size_t a) {
 #ifndef TEST
    /*uint_fast16_t ret = isqrt ((uint_fast64_t) a);*/
-   unsigned short ret = isqrt_orig ((unsigned long) a);
+   /*unsigned short ret = isqrt_orig ((unsigned long) a);*/
+   int ret = isqrt_orig0 ((int) a);
    return (size_t) ret;
 #else
    size_t rem = 0;

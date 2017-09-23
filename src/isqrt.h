@@ -15,6 +15,9 @@ extern "C" {
 unsigned short isqrt_orig (unsigned long a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
+int isqrt_orig0 (int a)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+
 uint_fast16_t isqrt (uint_fast64_t a)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
