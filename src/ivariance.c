@@ -28,7 +28,7 @@ void init_ivariance (void *restrict _dest) {
 __attribute__ ((leaf, nonnull (1), nothrow))
 void update_ivariance (void *restrict _dest, unigram_t val) {
    ivariance_t *restrict dest = (ivariance_t *restrict) _dest;
-   unigram_t dev;
+   size_t dev;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
    printf ("dest->val:%d\n", (int) val); fflush (stdout);
