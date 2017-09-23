@@ -12,10 +12,10 @@ extern "C" {
 #include <stat.h>
 
 typedef struct {
-   unigram_t ct; /* central tendency */
-   size_t sum; /* TODO use kahan's summation algo for floats */
    double res;
+   size_t sum; /* TODO use kahan's summation algo for floats */
    size_t df;
+   unigram_t ct; /* central tendency */
 } ivariance_t;
 
 void init_ivariance (void *restrict ivariance)
