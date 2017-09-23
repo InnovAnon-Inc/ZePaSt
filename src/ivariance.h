@@ -11,12 +11,15 @@ extern "C" {
 
 #include <stat.h>
 
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wpadded"
 typedef struct {
-   double res;
-   size_t sum; /* TODO use kahan's summation algo for floats */
+   ssize_t sum; /* TODO use kahan's summation algo for floats */
    size_t df;
+   double res;
    unigram_t ct; /* central tendency */
 } ivariance_t;
+	#pragma GCC diagnostic pop
 
 void init_ivariance (void *restrict ivariance)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
