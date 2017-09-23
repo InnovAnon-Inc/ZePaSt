@@ -10,7 +10,7 @@ bin_PROGRAMS += zepast stat-test
 
 lib_LTLIBRARIES += libisqrt.la
 libisqrt_la_SOURCES = isqrt.c
-#libisqrt_la_LIBADD = -lm
+libisqrt_la_LIBADD = -lm
 include_HEADERS += isqrt.h
 bin_PROGRAMS += isqrt
 isqrt_SOURCES = isqrt-test.c

@@ -13,6 +13,8 @@
 
 #include <string.h>
 
+#include <math.h>
+
 #include <isqrt.h>
 
 /* https://stackoverflow.com/questions/4930307/fastest-way-to-get-the-integer-part-of-sqrtn */
