@@ -7,7 +7,7 @@ libsum_la_SOURCES = sum.c
 libsum_la_LIBADD = -lzepast -lm
 
 libmean_la_SOURCES = mean.c
-libmean_la_LIBADD = -lzepast -lm
+libmean_la_LIBADD = libsum.la -lzepast -lm
 
 libvariance_la_SOURCES = variance.c
 libvariance_la_LIBADD = -lzepast -lm
@@ -31,14 +31,14 @@ sum_SOURCES = sum-test.c
 sum_LDADD = libzepast.la libsum.la -lm
 
 mean_SOURCES = mean-test.c
-mean_LDADD = libzepast.la libmean.la -lm
+mean_LDADD = libzepast.la libmean.la libsum.la -lm
 
 variance_SOURCES = variance-test.c
-variance_LDADD = libzepast.la libvariance.la libmean.la -lm
+variance_LDADD = libzepast.la libvariance.la libmean.la libsum.la -lm
 
 absdev_SOURCES = absdev-test.c
 # TODO libmedian.la
-absdev_LDADD = libzepast.la libabsdev.la libmean.la -lm
+absdev_LDADD = libzepast.la libabsdev.la libmean.la libsum.la -lm
 
 # trololol
 #dist_doc_DATA += src/Makefile.am
