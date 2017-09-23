@@ -9,7 +9,7 @@
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_stat (stat_t *restrict s, size_t nval) {
-   s->init (s->stats, nval);
+   s->init (s->stat, nval);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
@@ -18,7 +18,7 @@ void update_stat (
    unigram_t val, size_t nval) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
-   s->update (s->stats, val, nval);
+   s->update (s->stat, val, nval);
 	#pragma GCC diagnostic pop
 }
 
@@ -47,7 +47,7 @@ void updates_stat (
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_stat (stat_t *restrict s, size_t nval) {
-   s->finish (s->stats, nval);
+   s->finish (s->stat, nval);
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
