@@ -11,7 +11,6 @@
 #include <stdio.h>
 #endif
 
-#include <sum.h>
 #include <mean.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))

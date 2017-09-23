@@ -10,6 +10,7 @@ extern "C" {
 #include <glitter.h>
 
 #include <stat.h>
+#include <sum.h>
 
 typedef struct {
    sum_t  sum;
