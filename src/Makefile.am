@@ -38,7 +38,7 @@ libvariance_la_LIBADD = libzepast.la -lm
 include_HEADERS += variance.h
 bin_PROGRAMS += variance
 variance_SOURCES = variance-test.c
-variance_LDADD = libzepast.la libvariance.la libmean.la libsum.la -lm
+variance_LDADD = libzepast.la libvariance.la libsum.la -lm
 
 lib_LTLIBRARIES += libivariance.la
 libivariance_la_SOURCES = ivariance.c
@@ -46,7 +46,7 @@ libivariance_la_LIBADD = libzepast.la libisqrt.la -lm
 include_HEADERS += ivariance.h
 bin_PROGRAMS += ivariance
 ivariance_SOURCES = ivariance-test.c
-ivariance_LDADD = libzepast.la libivariance.la libisqrt.la libmean.la libsum.la -lm
+ivariance_LDADD = libzepast.la libivariance.la libisqrt.la libsum.la -lm
 
 lib_LTLIBRARIES += libabsdev.la
 libabsdev_la_SOURCES = absdev.c

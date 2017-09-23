@@ -17,7 +17,8 @@
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   mean_t mean;
+   /*mean_t mean;*/
+   sum_t sum;
    ivariance_t ivariance;
 
    char const str[] = "Hello, World!";
@@ -36,15 +37,17 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
-   mean.cnt = ARRSZ (vals);
-   ez_mean (&mean, vals, ARRSZ (vals));
+   /*mean.cnt = ARRSZ (vals);
+   ez_mean (&mean, vals, ARRSZ (vals));*/
+   ez_sum (&sum, vals, ARRSZ (vals));
 
 #ifndef NDEBUG
    (void) printf ("sum:%d\n",  (int) (mean.sum));
    (void) printf ("mean:%g\n", mean.res);
 #endif
 
-   ivariance.ct = (unigram_t) mean.res;
+   /*ivariance.ct = (unigram_t) mean.res;*/
+   ivariance.ct = (unigram_t) ((double) sum / (double) ARRSZ (vals));
    if (ARRSZ (vals) >= 30) ivariance.df = ARRSZ (vals) - 1;
    else                    ivariance.df = ARRSZ (vals);
    ez_ivariance (&ivariance, vals, ARRSZ (vals));
