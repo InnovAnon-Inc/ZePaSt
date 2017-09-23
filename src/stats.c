@@ -7,6 +7,8 @@
 
 #include <stats.h>
 
+#ifdef TEST
+
 /* override this with a version that uses memset and no loop */
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_stats (

@@ -16,6 +16,9 @@
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
+
+#ifdef TEST
+
    /*zepast_t z;*/
    /*stats_t ss[1];*/
    stat_t s[1];
@@ -47,4 +50,7 @@ int main (void) {
 
    (void) printf ("mean:%d,%g\n", (int) (mean.sum), mean.res);
    return EXIT_SUCCESS;
+
+#endif
+
 }

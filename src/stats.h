@@ -7,6 +7,8 @@ extern "C" {
 
 #include <stat.h>
 
+#ifdef TEST
+
 typedef __attribute__ ((nonnull (1)))
 void (*init_stats_t) (
    stat_t stats[], size_t nstat,
@@ -57,6 +59,8 @@ __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;*/
 
 void finish_stats (stats_t *restrict s, size_t nval)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
+
+#endif
 
 #ifdef __cplusplus
 }
