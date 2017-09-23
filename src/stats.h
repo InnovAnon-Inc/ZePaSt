@@ -9,11 +9,13 @@ extern "C" {
 
 typedef __attribute__ ((nonnull (1)))
 void (*init_stats_t) (
-   stats_t *restrict stat, size_t nval) ;
+   stat_t stats[], size_t nstat,
+   size_t nval) ;
 
 typedef __attribute__ ((nonnull (1)))
 void (*update_stats_t) (
-   stats_t *restrict stat, unigram_t val, size_t nval) ;
+   stat_t stats[], size_t nstat,
+   unigram_t val, size_t nval) ;
 
 /*typedef __attribute__ ((nonnull (1, 2)))
 void (*updates_stats_t) (
@@ -21,7 +23,8 @@ void (*updates_stats_t) (
 
 typedef __attribute__ ((nonnull (1)))
 void (*finish_stats_t) (
-   stats_t *restrict stat, size_t nval) ;
+   stat_t stat[], size_t nstat,
+   size_t nval) ;
 
 TODO (validate(stats_t*) functions)
 
@@ -31,7 +34,7 @@ typedef struct {
    /*updates_stats_t updates;*/
    finish_stats_t finish;
    stat_t *restrict stats;
-   size_t nstats;
+   /*size_t nstats;*/
 } stats_t;
 
 void init_stats (stats_t *restrict s, size_t nval)

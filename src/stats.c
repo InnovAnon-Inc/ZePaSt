@@ -7,19 +7,22 @@
 
 #include <stats.h>
 
+/* override this with a version that uses memset and no loop */
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
-void init_stats (stats_t *restrict s, size_t nval) {
+void init_stats (
+   stats_t s[], size_t nstat,
+   size_t nval) {
    size_t si;
-   for (si = 0; si != s->nstat; s++)
+   for (si = 0; si != /*s->*/nstat; s++)
       s->init (s->stats[si], nval);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void update_stats (
-   stats_t *restrict s,
+   stats_t s[], size_t nstat,
    unigram_t val, size_t nval) {
    size_t si;
-   for (si = 0; si != s->nstat; s++)
+   for (si = 0; si != /*s->*/nstat; s++)
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
       s->update (s->stats[si], val, nval);
@@ -48,8 +51,10 @@ void updates_stats1 (
 }*/
 
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
-void finish_stats (stats_t *restrict s, size_t nval) {
+void finish_stats (stats_t s[], size_t nstat, size_t nval) {
    size_t si;
    for (si = 0; si != s->nstat; s++)
       s->finish (s->stats[si], nval);
 }
+
+#endif

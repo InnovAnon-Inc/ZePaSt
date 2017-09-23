@@ -10,22 +10,18 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <zepast.h>
+#include <stat.h>
 #include <mean.h>
-
+#include <variance.h>
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   /*zepast_t z;*/
-   /*stats_t ss[1];*/
-   stat_t s[1];
+   stat_t s[2];
    mean_t mean;
+   variance_t variance;
    char const str[] = "Hello, World!";
    unigram_t vals[sizeof (str)];
    size_t vi;
-
-   /*z.statss = ss;*/
-   /*z.nstats = ARRSZ (ss);*/
 
    (void) memcpy (vals, str, sizeof (str));
 
@@ -33,18 +29,18 @@ int main (void) {
    s[0].update = update_mean;
    s[0].finish = finish_mean;
    s[0].stat   = &mean;
+   ez_stat (s + 0, vals, ARRSZ (vals);
 
-   /*ss[0].init   = init_stat;
-   ss[0].update = update_stat;
-   ss[0].finish = finish_stat;
-   ss[0].stats  = s;
-   ss[0].nstat  = ARRSZ (s);*/
+   variance.ct = mean.res;
+   s[1].init   = init_variance;
+   s[1].update = update_mean;
+   s[1].finish = finish_mean;
+   s[1].stat   = &mean;
+   ez_stat (s + 1, vals, ARRSZ (vals));
 
-   init_stats   (ss[0], ARRSZ (vals));
-   for (vi = 0; vi != ARRSZ (vals); vi++)
-      update_stats (ss[0], vals[vi], ARRSZ (vals));
-   finish_stats (ss[0], vals, ARRSZ (vals));
-
-   (void) printf ("mean:%d,%g\n", (int) (mean.sum), mean.res);
+   (void) printf ("sum:%d\n",      (int) (mean.sum));
+   (void) printf ("mean:%g\n",     mean.res);
+   (void) printf ("variance:%g\n", variance.sum);
+   (void) printf ("stddev:%g\n",   variance.res);
    return EXIT_SUCCESS;
 }

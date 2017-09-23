@@ -61,6 +61,11 @@ __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;*/
 void finish_stat (stat_t *restrict s, size_t nval)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void ez_stat (
+   stat_t *restrict s,
+   unigram_t vals, size_t nval)
+__attribute__ ((nonnull (1, 2), nothrow)) ;
+
 #ifdef __cplusplus
 }
 #endif

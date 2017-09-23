@@ -49,3 +49,20 @@ __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_stat (stat_t *restrict s, size_t nval) {
    s->finish (s->stats, nval);
 }
+
+__attribute__ ((nonnull (1, 2), nothrow))
+void ez_stat (
+   stat_t *restrict s,
+   unigram_t vals, size_t nval) {
+   size_t vi;
+   init_stat (s, nval);
+   for (vi = 0; vi != nval; vi++)
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
+      update_stat (s, vals[vi], nval);
+	#pragma GCC diagnostic pop
+   finish_stat (s, nval);
+}
+
+TODO (random sampling for sublinear time)
+TODO (dynamic programming parallel version of ez_stat())
