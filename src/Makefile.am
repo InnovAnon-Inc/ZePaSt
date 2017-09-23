@@ -22,4 +22,7 @@ stat_test_LDADD = libzepast.la libmean.la libvariance.la -lm
 mean_test_SOURCES = mean-test.c
 mean_test_LDADD = libzepast.la libmean.la -lm
 
+# trololol
+#dist_doc_DATA += src/Makefile.am
+
 AM_CPPFLAGS = -D__STDC_INT64__

@@ -13,7 +13,6 @@ extern "C" {
 
 typedef struct {
    size_t sum;
-   /*size_t cnt;*/
    double res;
 } mean_t;
 
