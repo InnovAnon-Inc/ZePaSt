@@ -11,8 +11,7 @@
 #include <stdio.h>
 #endif
 
-#include <math.h>
-
+#include <isqrt.h>
 #include <ivariance.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
@@ -53,7 +52,8 @@ void update_ivariance (void *restrict _dest, unigram_t val) {
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_ivariance (void *restrict _dest) {
    ivariance_t *restrict dest = (ivariance_t *restrict) _dest;
-   dest->res = isqrt (dest->sum) / (double) (dest->df);
+   TODO (check whether sum is negative)
+   dest->res = (double) isqrt_size_t ((size_t) (dest->sum)) / (double) (dest->df);
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
    printf ("dest->res:%g\n", dest->res); fflush (stdout);
