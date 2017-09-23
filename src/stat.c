@@ -5,6 +5,10 @@
 #define _POSIX_C_SOURCE 200112L
 #define __STDC_VERSION__ 200112L
 
+#ifndef NDEBUG
+#include <stdio.h>
+#endif
+
 #include <stat.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
@@ -56,11 +60,15 @@ void ez_stat (
    unigram_t const vals[], size_t nval) {
    size_t vi;
    init_stat (s, nval);
-   for (vi = 0; vi != nval; vi++)
+   for (vi = 0; vi != nval; vi++) {
+#ifndef NDEBUG
+      printf ("vals[%d]:%d %c\n", (int) vi, (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
+#endif
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
       update_stat (s, vals[vi], nval);
 	#pragma GCC diagnostic pop
+   }
    finish_stat (s, nval);
 }
 

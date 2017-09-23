@@ -23,12 +23,12 @@ int main (void) {
    /*(void) memcpy (vals, str, sizeof (str));*/
    TODO (check overflow)
 #ifndef NDEBUG
-   printf ("ARRSZ (vals):%d\n", (int) ARRSZ (vals));
+   printf ("ARRSZ (vals):%d\n", (int) ARRSZ (vals)); fflush (stdout);
 #endif
    for (vi = 0; vi != ARRSZ (vals); vi++) {
       vals[vi] = (unigram_t) str[vi];
 #ifndef NDEBUG
-      printf ("vals[%d]:%d %c\n", (int) vi, (int) (vals[vi]), (char) (vals[vi]));
+      printf ("vals[%d]:%d %c\n", (int) vi, (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
    ez_mean (&mean, vals, ARRSZ (vals));

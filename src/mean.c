@@ -16,7 +16,7 @@ void init_mean (void *restrict _dest, size_t nval) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    dest->sum = 0;
 #ifndef NDEBUG
-   printf ("dest->sum:%d\n", (int) (dest->sum));
+   printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
 #endif
 }
 
@@ -25,12 +25,12 @@ void update_mean (void *restrict _dest, unigram_t val, size_t nval) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    TODO (check overflow)
 #ifndef NDEBUG
-   printf ("dest->sum:%d\n", (int) (dest->sum));
-   printf ("dest->val:%d\n", (int) val);
+   printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
+   printf ("dest->val:%d\n", (int) val); fflush (stdout);
 #endif
    dest->sum += val;
 #ifndef NDEBUG
-   printf ("dest->sum:%d\n", (int) (dest->sum));
+   printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
 #endif
    /*dest->cnt++;*/
 }
@@ -40,8 +40,8 @@ void finish_mean (void *restrict _dest, size_t nval) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
    dest->res = (double) (dest->sum) / (double) (/*dest->cnt*/nval);
 #ifndef NDEBUG
-   printf ("dest->sum:%d\n", (int) (dest->sum));
-   printf ("dest->res:%g\n", dest->res);
+   printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
+   printf ("dest->res:%g\n", dest->res); fflush (stdout);
 #endif
 }
 
