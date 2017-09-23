@@ -32,7 +32,10 @@ void update_mean (void *restrict _dest, unigram_t val) {
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
    printf ("dest->val:%d\n", (int) val); fflush (stdout);
 #endif
-   update_sum (&(dest->sum));
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
+   update_sum (&(dest->sum), val);
+	#pragma GCC diagnostic pop
    dest->cnt ++;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
