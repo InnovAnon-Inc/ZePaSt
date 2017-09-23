@@ -62,7 +62,8 @@ uint_fast16_t isqrt (uint_fast64_t a) {
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_size_t (size_t a) {
 #ifndef TEST
-   uint_fast16_t ret = isqrt ((uint_fast64_t) a);
+   /*uint_fast16_t ret = isqrt ((uint_fast64_t) a);*/
+   unsigned short ret = isqrt_orig ((unsigned long) a);
    return (size_t) ret;
 #else
    size_t rem = 0;
