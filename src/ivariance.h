@@ -14,7 +14,7 @@ extern "C" {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wpadded"
 typedef struct {
-   ssize_t sum; /* TODO use kahan's summation algo for floats */
+   size_t sum;
    size_t df;
    double res;
    unigram_t ct; /* central tendency */

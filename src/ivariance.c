@@ -41,7 +41,7 @@ void update_ivariance (void *restrict _dest, unigram_t val) {
 #ifndef NDEBUG
    printf ("dev ** 2:%d\n", (int) dev); fflush (stdout);
 #endif
-   dest->sum += dev;
+   dest->sum += (size_t) dev;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
 #endif
