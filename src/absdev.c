@@ -53,7 +53,7 @@ __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_absdev (void *restrict _dest) {
    absdev_t *restrict dest = (absdev_t *restrict) _dest;
    TODO (compute median deviation)
-   dest->res = dest->sum / (double) nval;
+   dest->res = dest->sum / (double) (dest->df);
 #ifndef NDEBUG
    printf ("dest->sum:%g\n", dest->sum); fflush (stdout);
    printf ("dest->res:%g\n", dest->res); fflush (stdout);
