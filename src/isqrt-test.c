@@ -7,6 +7,7 @@
 
 #define NDEBUG 1
 
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,7 +21,8 @@ __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
    size_t n, maxn;
    maxn = 100;
-   for (n = 0; n != maxn; n++) {
+   /*for (n = 0; n != maxn; n++) {*/
+   for (n = maxn - 1; n != SIZE_MAX; n--) {
       double exp;
       size_t act;
       exp = sqrt ((double) n);
