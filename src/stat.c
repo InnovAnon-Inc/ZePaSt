@@ -15,14 +15,14 @@
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_stat (stat_t *restrict s) {
-   s->init (s->stat, nval);
+   s->init (s->stat);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void update_stat (stat_t *restrict s, unigram_t val) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
-   s->update (s->stat, val, nval);
+   s->update (s->stat, val);
 	#pragma GCC diagnostic pop
 }
 
@@ -51,7 +51,7 @@ void updates_stat (
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_stat (stat_t *restrict s) {
-   s->finish (s->stat, nval);
+   s->finish (s->stat);
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
@@ -59,7 +59,7 @@ void ez_stat (
    stat_t *restrict s,
    unigram_t const vals[], size_t nval) {
    size_t vi;
-   init_stat (s, nval);
+   init_stat (s);
    for (vi = 0; vi != nval; vi++) {
 #ifndef NDEBUG
       printf ("vals[%d]:%d %c\n", (int) vi, (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
@@ -69,7 +69,7 @@ void ez_stat (
       update_stat (s, vals[vi]);
 	#pragma GCC diagnostic pop
    }
-   finish_stat (s, nval);
+   finish_stat (s);
 }
 
 TODO (random sampling for sublinear time)
