@@ -2,8 +2,8 @@
 #include <config.h>
 #endif
 
-#define _POSIX_C_SOURCE 200112L
-#define __STDC_VERSION__ 200112L
+#define _POSIX_C_SOURCE 200809L
+#define __STDC_VERSION__ 200809L
 
 #define NDEBUG 1
 
@@ -63,13 +63,14 @@ int isqrt_orig0 (int x) {
 }
 
 #ifndef MSB
-#define MSB(N) ffsl ((long) (N))
+#define MSB(N) (ffsl ((long) (N)))
 #endif
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t isqrt_orig1 (size_t N) {
    size_t a = 1;
-   size_t b = (size_t) ceil ((double) MSB (N) / 2);
+   double tmp = ceil ((double) MSB (N) / 2);
+   size_t b = (size_t) tmp;
    while (abs (a - b) > 1) {
       b = N / a;
       a = (a + b) / 2;
