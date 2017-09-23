@@ -46,8 +46,7 @@ int main (void) {
 #endif
 
    absdev.ct = mean.res;
-   if (ARRSZ (vals) >= 30) absdev.df = ARRSZ (vals) - 1;
-   else                    absdev.df = ARRSZ (vals);
+   absdev.df = ARRSZ (vals);
    ez_absdev (&absdev, vals, ARRSZ (vals));
 
    (void) printf ("absvar:%g\n", absdev.sum);

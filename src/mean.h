@@ -12,7 +12,7 @@ extern "C" {
 #include <stat.h>
 
 typedef struct {
-   size_t sum;
+   sum_t  sum;
    size_t cnt;
    double res;
 } mean_t;

@@ -11,12 +11,13 @@
 #include <stdio.h>
 #endif
 
+#include <sum.h>
 #include <mean.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_mean (void *restrict _dest) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
-   dest->sum = 0;
+   init_sum (&(dest->sum));
    dest->cnt = 0;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
@@ -31,7 +32,7 @@ void update_mean (void *restrict _dest, unigram_t val) {
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
    printf ("dest->val:%d\n", (int) val); fflush (stdout);
 #endif
-   dest->sum += val;
+   update_sum (&(dest->sum));
    dest->cnt ++;
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
@@ -42,6 +43,7 @@ void update_mean (void *restrict _dest, unigram_t val) {
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_mean (void *restrict _dest) {
    mean_t *restrict dest = (mean_t *restrict) _dest;
+   finish_sum (&(dest->sum));
    dest->res = (double) (dest->sum) / (double) (dest->cnt);
 #ifndef NDEBUG
    printf ("dest->sum:%d\n", (int) (dest->sum)); fflush (stdout);
