@@ -21,7 +21,6 @@ int main (void) {
    variance_t variance;
    char const str[] = "Hello, World!";
    unigram_t vals[sizeof (str)];
-   size_t vi;
 
    (void) memcpy (vals, str, sizeof (str));
 
