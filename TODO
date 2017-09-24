@@ -15,7 +15,7 @@ stat_mulvar_update (vals[], nval):
 
 
 ez_stat_off (vals[], nval, offset):
-	size_t vi, offset;
+	size_t vi;
 	/* offset must evenly divide nval */
 	for (vi = 0; vi != nval - offset; vi++)
 		stat_off_update (vals[vi], vals[vi + offset]);
@@ -49,6 +49,38 @@ ez_mulvar (vals *[], nval, vars[], nvar):
 
 ez_all (vals *[], nval, vars[], nvar, offset, n):
 	size_t vali, vari, valj;
+	for (vali = 0; vali != nval; vali++)
+		for (vari = 0; vari != nvar; vari++)
+			vars[i] = vals[vari][vali];
+		pstat_update (vars);
+		update (vals[0][vali]);
+
+
+
+
+
+
+
+	/* n must evenly divide nval */
+	for (vali = 0; vali != nval - n; vali += n)
+
+		for (vari = 0; vari != nvar; vari++)
+			vars[vari] = vals[vari] + vali;
+		pstat_update (vars);
+
+		stat_ngram_update (vals + vali, n);
+		for (valj = 0; valj != n && vali + valj != nval - offset; valj++)
+			stat_off_update (vals[vali + valj], vals[vali + valj + offset]);
+			update (vals[vali + valj]);
+		for ( ; valj != n; valj++)
+			update (vals[vali + valj]);
+	/* otherwise */
+	for ( ;      vali != nval - offset;     vali++)
+		stat_off_update (vals[vali], vals[vali + offset]);
+		update (vals[vali]);
+	for ( ;      vali != nval;          vali++)
+		update (vals[vali]);
+
 
 
 
