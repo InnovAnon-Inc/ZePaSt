@@ -12,10 +12,11 @@ AC_CONFIG_MACRO_DIR([m4])
 
 AC_CHECK_HEADERS([stdlib.h])
 AC_CHECK_HEADERS([pthread.h])
-AC_CHECK_HEADERS([glitter.h thpool.h])
+AC_CHECK_HEADERS([glitter.h isqrt.h thpool.h])
 
 #AC_CHECK_LIB([stdlib],[])
 AC_CHECK_LIB([pthread],[pthread_create,pthread_join])
+AC_CHECK_LIB([isqrt],[isqrt_size_t])
 AC_CHECK_LIB([thpool],[thpool_init,thpool_add_work,thpool_wait,thpool_pause,thpool_resume,thpool_destroy,thpool_num_threads_working])
 
 INNOVANON_WARNINGS([])
