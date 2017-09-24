@@ -17,7 +17,7 @@ void (*init_pstat_t) (void *restrict stat) ;
 
 /* change unigram_t[] to void * */
 typedef __attribute__ ((nonnull (1, 2)))
-void (*update_pstat_t) (void *restrict stat, unigram_t vals[]) ;
+void (*update_pstat_t) (void *restrict stat, unigram_t const vals[]) ;
 
 typedef __attribute__ ((nonnull (1)))
 void (*finish_pstat_t) (void *restrict stat) ;
@@ -34,7 +34,7 @@ typedef struct {
 void init_pstat (pstat_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void update_pstat (pstat_t *restrict s, unigram_t vals[])
+void update_pstat (pstat_t *restrict s, unigram_t const vals[])
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void finish_pstat (pstat_t *restrict s)
