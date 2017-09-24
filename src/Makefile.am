@@ -10,11 +10,29 @@ libstat_la_LIBADD = -lm
 include_HEADERS += stat.h
 #bin_PROGRAMS += stat-test
 
+lib_LTLIBRARIES += libstat_off.la
+libstat_off_la_SOURCES = stat_off.c
+libstat_off_la_LIBADD = libstat.la -lm
+include_HEADERS += stat_off.h
+#bin_PROGRAMS += stat_off-test
+
 lib_LTLIBRARIES += libpstat.la
 libpstat_la_SOURCES = pstat.c
 libpstat_la_LIBADD = -lm
 include_HEADERS += pstat.h
 #bin_PROGRAMS += pstat-test
+
+lib_LTLIBRARIES += libpstat_ngram.la
+libpstat_ngram_la_SOURCES = pstat_ngram.c
+libpstat_ngram_la_LIBADD = libpstat.la -lm
+include_HEADERS += pstat_ngram.h
+#bin_PROGRAMS += pstat_ngram-test
+
+lib_LTLIBRARIES += libpstat_mulvar.la
+libpstat_mulvar_la_SOURCES = pstat_mulvar.c
+libpstat_mulvar_la_LIBADD = libpstat.la -lm
+include_HEADERS += pstat_mulvar.h
+#bin_PROGRAMS += pstat_mulvar-test
 
 lib_LTLIBRARIES += libzepast.la
 libzepast_la_SOURCES = zepast.c stats.c

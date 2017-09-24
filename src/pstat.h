@@ -35,7 +35,7 @@ void init_pstat (pstat_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void update_pstat (pstat_t *restrict s, unigram_t const vals[])
-__attribute__ ((leaf, nonnull (1), nothrow)) ;
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void finish_pstat (pstat_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;

@@ -32,7 +32,7 @@ void init_pstat (pstat_t *restrict s) {
    s->init (s->stat);
 }
 
-__attribute__ ((leaf, nonnull (1), nothrow))
+__attribute__ ((leaf, nonnull (1, 2), nothrow))
 void update_pstat (pstat_t *restrict s, unigram_t const vals[]) {
    s->update (s->stat, vals);
 }
