@@ -10,7 +10,7 @@ extern "C" {
 
 #include <glitter.h>
 
-typedef uint8_t unigram_t;
+#include <stat-common.h>
 
 typedef __attribute__ ((nonnull (1)))
 void (*init_stat_t) (void *restrict stat) ;
