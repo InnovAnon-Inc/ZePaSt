@@ -60,6 +60,7 @@ void ez_pstat_offset (
       update_pstat (s, p);
       /*stat_off_update (vals[vi], vals[vi + offset]);*/
       /*update_stat (s, vals[vi]);*/
+   }
    /* otherwise */
    /*for ( ;      vi != nval;          vi++)
       update_stat (s, vals[vi]);*/
@@ -73,11 +74,12 @@ void ez_pstat_ngram (
    size_t vi, vj;
    init_pstat (s);
    /* n must evenly divide nval */
-   for (vi = 0; vi != nval - n; vi += n)
+   for (vi = 0; vi != nval - n; vi += n) {
       update_pstat (s, vals + vi);
       /*stat_ngram_update (vals + vi, n);*/
       /*for (vj = 0; vj != n; vj++)
          update_stat (s, vals[vi + vj]);*/
+   }
    /* otherwise */
    /*for ( ;      vi != nval;     vi++)
       update_stat (s, vals[vi]);*/
@@ -95,9 +97,10 @@ void ez_pstat_mulvar (
    TODO (then it will be slow to load the models vals)
    init_pstat (s);
    for (vali = 0; vali != nval; vali++)
-      for (vari = 0; vari != nvar; vari++)
+      for (vari = 0; vari != nvar; vari++) {
          vars[i] = vals[vari][vali];
          pstat_update (s, vars);
          /*stat_update (s, vals[0][vali]);*/
+      }
    finish_pstat (s);
 }
