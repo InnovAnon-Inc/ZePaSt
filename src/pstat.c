@@ -99,7 +99,7 @@ void ez_pstat_mulvar (
    for (vali = 0; vali != nval; vali++)
       for (vari = 0; vari != nvar; vari++) {
          vars[vari] = vals[vari][vali];
-         pstat_update (s, vars);
+         update_pstat (s, vars);
          /*stat_update (s, vals[0][vali]);*/
       }
    finish_pstat (s);
