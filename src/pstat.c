@@ -93,7 +93,7 @@ void ez_pstat_mulvar (
    unigram_t vars[], size_t nvar) {
    size_t vali, vari;
    TODO (e.g., cache-aware loop-blocking)
-   TODO (if nval is really big... i.e., vals[*][vali])
+   TODO (if nval is really big... i.e. vals[*][vali])
    TODO (then it will be slow to load the models vals)
    init_pstat (s);
    for (vali = 0; vali != nval; vali++)
