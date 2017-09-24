@@ -77,8 +77,8 @@ absdev_LDADD = libzepast.la libstat.la libabsdev.la libmean.la libsum.la -lm
 zepast_SOURCES = main.c
 zepast_LDADD = libzepast.la libstat.la libmean.la libvariance.la libabsdev.la -lm
 
-stat_test_SOURCES = stat-test.c
-stat_test_LDADD = libzepast.la libstat.la libmean.la libvariance.la libabsdev.la -lm
+#stat_test_SOURCES = stat-test.c
+#stat_test_LDADD = libzepast.la libstat.la libmean.la libvariance.la libabsdev.la -lm
 
 # trololol
 #dist_doc_DATA += src/Makefile.am
