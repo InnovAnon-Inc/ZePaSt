@@ -4,6 +4,6 @@
 [submodule "glitter"]
 	path = glitter
 	url = https://github.com/InnovAnon-Inc/glitter.git
-[submodule "isqrt"]
-	path = isqrt
-	url = https://github.com/InnovAnon-Inc/isqrt.git
+[submodule "iSqrt"]
+	path = iSqrt
+	url = https://github.com/InnovAnon-Inc/iSqrt.git
