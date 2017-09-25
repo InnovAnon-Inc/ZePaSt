@@ -45,7 +45,10 @@ void ez_stat_off (
       printf ("vals[%d]:%d %c\n", (int) vi, (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
       printf ("vals[%d]:%d %c\n", (int) (vi + offset), (int) (vals[vi + offset]), (char) (vals[vi + offset])); fflush (stdout);
 #endif
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
       update_stat_off (s, vals[vi], vals[vi + offset]);
+	#pragma GCC diagnostic pop
       /*update_stat (s, vals[vi]);*/
    }
    /* otherwise */
