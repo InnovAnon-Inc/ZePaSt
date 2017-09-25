@@ -39,7 +39,7 @@ __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void finish_pstat (pstat_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
-
+/*
 void ez_pstat_offset (
    pstat_t *restrict s,
    unigram_t const vals[], size_t nval, size_t offset)
@@ -60,7 +60,7 @@ void ez_pstat_mulvar_alloc (
    pstat_t *restrict s,
    unigram_t const *restrict vals[], size_t nval, size_t nvar)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
-
+*/
 #ifdef __cplusplus
 }
 #endif
