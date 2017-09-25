@@ -42,6 +42,7 @@ void finish_pstat (pstat_t *restrict s) {
    s->finish (s->stat);
 }
 
+#ifdef TEST
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_pstat_offset (
    pstat_t *restrict s,
@@ -69,52 +70,7 @@ void ez_pstat_offset (
       update_stat (s, vals[vi]);*/
    finish_pstat (s);
 }
-
-__attribute__ ((nonnull (1, 2), nothrow))
-void ez_pstat_ngram (
-   pstat_t *restrict s,
-   unigram_t const vals[], size_t nval, size_t n) {
-   size_t vi, vj;
-   /*s->init   = init_pstat_ngram;
-   s->update = update_pstat_ngram;
-   s->finish = finish_pstat_ngram;*/
-   init_pstat (s);
-   /* n must evenly divide nval */
-   for (vi = 0; vi != nval - n; vi += n) {
-      update_pstat (s, vals + vi);
-      /*stat_ngram_update (vals + vi, n);*/
-      /*for (vj = 0; vj != n; vj++)
-         update_stat (s, vals[vi + vj]);*/
-   }
-   /* otherwise */
-   /*for ( ;      vi != nval;     vi++)
-      update_stat (s, vals[vi]);*/
-   finish_pstat (s);
-}
-
-TODO (correlate ngrams at different offsets)
-
-__attribute__ ((nonnull (1, 2, 4), nothrow))
-void ez_pstat_mulvar (
-   pstat_t *restrict s,
-   unigram_t const *restrict vals[], size_t nval,
-   unigram_t vars[], size_t nvar) {
-   size_t vali, vari;
-   /*s->init   = init_pstat_mulvar;
-   s->update = update_pstat_mulvar;
-   s->finish = finish_pstat_mulvar;*/
-   TODO (e.g. cache-aware loop-blocking)
-   TODO (if nval is really big... i.e. vals[*][vali])
-   TODO (then it will be slow to load the models vals)
-   init_pstat (s);
-   for (vali = 0; vali != nval; vali++)
-      for (vari = 0; vari != nvar; vari++) {
-         vars[vari] = vals[vari][vali];
-         update_pstat (s, vars);
-         /*stat_update (s, vals[0][vali]);*/
-      }
-   finish_pstat (s);
-}
+#endif
 
 TODO (correlate ngrams of different vectors)
 /*TODO (correlate offsets of different vectors ?)*/
