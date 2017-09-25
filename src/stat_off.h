@@ -14,14 +14,14 @@ extern "C" {
 #include <stat.h>
 
 typedef __attribute__ ((nonnull (1)))
-void (*init_stat_off_t) (void *restrict stat) ;
+void (*init_stat_off_t) (stat_t *restrict stat) ;
 
 /* change unigram_t[] to void * */
 typedef __attribute__ ((nonnull (1, 2)))
-void (*update_stat_off_t) (void *restrict stat, unigram_t const vals[]) ;
+void (*update_stat_off_t) (stat_t *restrict stat, unigram_t const vals[]) ;
 
 typedef __attribute__ ((nonnull (1)))
-void (*finish_stat_off_t) (void *restrict stat) ;
+void (*finish_stat_off_t) (stat_t *restrict stat) ;
 
 typedef __attribute__ ((const, warn_unused_result))
 unigram_t (*stat_off_diff_t) (unigram_t left, unigram_t right) ;
