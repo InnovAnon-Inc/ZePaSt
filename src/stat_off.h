@@ -23,7 +23,7 @@ void (*update_stat_off_t) (void *restrict stat, unigram_t const vals[]) ;
 typedef __attribute__ ((nonnull (1)))
 void (*finish_stat_off_t) (void *restrict stat) ;
 
-typedef __attribute__ ((const, leaf, warn_unused_result))
+typedef __attribute__ ((const, warn_unused_result))
 unigram_t (*stat_off_diff_t) (unigram_t left, unigram_t right) ;
 
 typedef struct {

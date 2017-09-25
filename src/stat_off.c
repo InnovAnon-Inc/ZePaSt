@@ -21,7 +21,10 @@ void init_stat_off (stat_off_t *restrict s) {
 __attribute__ ((leaf, nonnull (1), nothrow))
 void update_stat_off (stat_off_t *restrict s,
    unigram_t left, unigram_t right) {
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
    unigram_t val = s->diff (left, right);
+	#pragma GCC diagnostic pop
    update_stat (s->stat, val);
 }
 
