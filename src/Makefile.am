@@ -14,8 +14,7 @@ lib_LTLIBRARIES += libstat_off.la
 libstat_off_la_SOURCES = stat_off.c
 libstat_off_la_LIBADD = libstat.la -lm
 include_HEADERS += stat_off.h
-bin_PROGRAMS += stat_off-test
-#stat_off_test_SOURCES = stat_off-test.c
+#bin_PROGRAMS += stat_off-test
 
 lib_LTLIBRARIES += libstat_off_diff.la
 libstat_off_diff_la_SOURCES = stat_off_diff.c
