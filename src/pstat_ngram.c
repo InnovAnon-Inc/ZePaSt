@@ -15,19 +15,19 @@
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_pstat_ngram (pstat_ngram_t *restrict s) {
-   init_pstat (&(s->stat));
+   init_pstat (s->stat);
 }
 
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void update_pstat_ngram (pstat_ngram_t *restrict s,
    unigram_t const ngram[]) {
    /*s->combine (val, ngram);*/
-   update_pstat (&(s->stat), ngram);
+   update_pstat (s->stat, ngram);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_pstat_ngram (pstat_ngram_t *restrict s) {
-   finish_pstat (&(s->stat));
+   finish_pstat (s->stat);
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
