@@ -19,7 +19,7 @@
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   sum_t sum;
+   sum_t sum_stat;
    variance_t variance;
    stat_t mean_stat;
    stat_t var_stat;
