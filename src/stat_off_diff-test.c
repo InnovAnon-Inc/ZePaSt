@@ -23,7 +23,7 @@ int main (void) {
    variance_t variance;
    stat_t sum_stat;
    stat_t var_stat;
-   size_t offset = 2;
+   size_t offset = 2; /* cant' be odd until I fix a TODO */
 
    char const str[] = "Hello, World!";
    unigram_t vals[sizeof (str) * sizeof (char)];

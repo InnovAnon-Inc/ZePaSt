@@ -32,12 +32,14 @@ void finish_pstat_ngram (pstat_ngram_t *restrict s) {
 
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_pstat_ngram (
-   pstat_ngram_t *restrict s,
+   pstat_t *restrict stat,
    unigram_t const vals[], size_t nval, size_t n) {
    size_t vi, vj;
    /*s->init   = init_pstat_ngram;
    s->update = update_pstat_ngram;
    s->finish = finish_pstat_ngram;*/
+   pstat_ngram_t s;
+   s.stat = stat;
    init_pstat_ngram (s);
    /* n must evenly divide nval */
    for (vi = 0; vi != nval - n; vi += n) {

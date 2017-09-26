@@ -12,26 +12,25 @@ extern "C" {
 
 #include <pstat.h>
 
-typedef __attribute__ ((nonnull (1)))
+/*typedef __attribute__ ((nonnull (1)))
 void (*init_pstat_ngram_t) (pstat_t *restrict stat) ;
 
-/* change unigram_t[] to void * */
 typedef __attribute__ ((nonnull (1, 2)))
 void (*update_pstat_ngram_t) (pstat_t *restrict stat, unigram_t const vals[]) ;
 
 typedef __attribute__ ((nonnull (1)))
-void (*finish_pstat_ngram_t) (pstat_t *restrict stat) ;
+void (*finish_pstat_ngram_t) (pstat_t *restrict stat) ;*/
 
-typedef __attribute__ ((const, nonnull (1, 2)))
-void (*pstat_ngram_combine_t) (unigram_t val[], unigram_t const vals[]) ;
+/*typedef __attribute__ ((const, nonnull (1, 2)))
+void (*pstat_ngram_combine_t) (unigram_t val[], unigram_t const vals[]) ;*/
 
 typedef struct {
-   init_pstat_ngram_t    init;
+   /*init_pstat_ngram_t    init;
    update_pstat_ngram_t  update;
-   finish_pstat_ngram_t  finish;
-   pstat_t               stat;
+   finish_pstat_ngram_t  finish;*/
+   pstat_t               *restrict stat;
    /*void *restrict stat;*/
-   pstat_ngram_combine_t combine;
+   /*pstat_ngram_combine_t combine;*/
 } pstat_ngram_t;
 
 void init_pstat_ngram (pstat_ngram_t *restrict s)

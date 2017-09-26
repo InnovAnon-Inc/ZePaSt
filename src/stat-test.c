@@ -29,10 +29,11 @@ int main (void) {
    for (vi = 0; vi != ARRSZ (vals); vi++)
       vals[vi] = (unigram_t) str[vi];
 
-   s[0].init   = init_mean;
+   /*s[0].init   = init_mean;
    s[0].update = update_mean;
    s[0].finish = finish_mean;
-   s[0].stat   = &mean;
+   s[0].stat   = &mean;*/
+   init_mean (s + 0, &mean);
    ez_stat (s + 0, vals, ARRSZ (vals));
 
    /*variance.ct = mean.res;
