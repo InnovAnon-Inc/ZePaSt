@@ -38,8 +38,8 @@ void init_pstat_ngram (pstat_ngram_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void update_pstat_ngram (pstat_ngram_t *restrict s,
-   unigram_t left, unigram_t right)
-__attribute__ ((leaf, nonnull (1), nothrow)) ;
+   unigram_t const ngram[])
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void finish_pstat_ngram (pstat_ngram_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
