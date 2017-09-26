@@ -11,44 +11,37 @@
 #include <stdio.h>
 #endif
 
-#include <stat_off.h>
+#include <pstat_off.h>
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void init_stat_off (stat_off_t *restrict s) {
-   /*init_stat (&(s->stat));*/
-   /*s->init (&(s->stat));*/
-   init_stat (s->stat);
+void init_pstat_off (pstat_off_t *restrict s) {
+   init_pstat (s->stat);
 }
 
-__attribute__ ((leaf, nonnull (1), nothrow))
-void update_stat_off (stat_off_t *restrict s,
-   unigram_t left, unigram_t right) {
+__attribute__ ((leaf, nonnull (1, 2), nothrow))
+void update_pstat_off (pstat_off_t *restrict s,
+   unigram_t val[]) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
-   unigram_t val = s->diff (left, right);
-   /*update_stat (&(s->stat), val);*/
-   /*s->update (&(s->stat), val));*/
-   update_stat (s->stat, val);
+   /* TODO */
+   /*void *restrict val = s->diff (left, right);*/
+   update_pstat (s->stat, val);
 	#pragma GCC diagnostic pop
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void finish_stat_off (stat_off_t *restrict s) {
-   /*finish_stat (&(s->stat));*/
-   /*s->finish (&(s->stat));*/
-   finish_stat (s->stat);
+void finish_pstat_off (pstat_off_t *restrict s) {
+   finish_pstat (s->stat);
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
-void ez_stat_off (
-   TODO (this should be stat_t*)
-   stat_off_t *restrict s,
+void ez_pstat_off (
+   TODO (this should be pstat *)
+   pstat_off_t *restrict s,
    unigram_t const vals[], size_t nval, size_t offset) {
    size_t vi;
-   /*s->init   = init_stat;
-   s->update = update_stat;
-   s->finish = finish_stat;*/
-   init_stat_off (s);
+   unigram_t val[2];
+   init_pstat_off (s);
    /* offset must evenly divide nval */
    for (vi = 0; vi != nval - offset; vi++) {
 #ifndef NDEBUG
@@ -57,12 +50,15 @@ void ez_stat_off (
 #endif
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
-      update_stat_off (s, vals[vi], vals[vi + offset]);
+      /* it's up to you to make sure you don't overlap your memory addresses */
+      val[0] = vals[vi];
+      val[1] = vals[vi + offset];
+      update_pstat_off (s, vals);
 	#pragma GCC diagnostic pop
       /*update_stat (s, vals[vi]);*/
    }
    /* otherwise */
    /*for ( ;      vi != nval;          vi++)
       update_stat (s, vals[vi]);*/
-   finish_stat_off (s);
+   finish_pstat_off (s);
 }

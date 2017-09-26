@@ -30,6 +30,12 @@ libpstat_la_LIBADD = -lm
 include_HEADERS += pstat.h
 #bin_PROGRAMS += pstat-test
 
+lib_LTLIBRARIES += libpstat_off.la
+libpstat_off_la_SOURCES = pstat_off.c
+libpstat_off_la_LIBADD = libpstat_off.la libpstat.la -lm
+include_HEADERS += pstat_off.h
+#bin_PROGRAMS += pstat_off-test
+
 lib_LTLIBRARIES += libpstat_ngram.la
 libpstat_ngram_la_SOURCES = pstat_ngram.c
 libpstat_ngram_la_LIBADD = libpstat.la -lm
