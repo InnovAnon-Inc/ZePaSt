@@ -31,11 +31,12 @@ void finish_pstat_mulvar (pstat_mulvar_t *restrict s) {
 
 __attribute__ ((nonnull (1, 2, 4), nothrow))
 void ez_pstat_mulvar (
-   pstat_t *restrict s,
+   pstat_t *restrict stat,
    unigram_t const *restrict vals[], size_t nval,
    unigram_t vars[], size_t nvar) {
    size_t vali, vari;
-   stat_t s;
+   pstat_t s;
+   s.stat = stat;
    /*s->init   = init_pstat_mulvar;
    s->update = update_pstat_mulvar;
    s->finish = finish_pstat_mulvar;*/
