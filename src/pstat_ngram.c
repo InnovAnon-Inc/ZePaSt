@@ -18,9 +18,12 @@ void init_pstat_ngram (pstat_ngram_t *restrict s) {
    init_pstat (&(s->stat));
 }
 
-__attribute__ ((leaf, nonnull (1, 2), nothrow))
-void update_pstat_ngram (pstat_ngram_t *restrict s, unigram_t const ngram[]) {
-   ngram_t val = s->combine (ngram);
+__attribute__ ((leaf, nonnull (1, 2, 3), nothrow))
+void update_pstat_ngram (
+   pstat_ngram_t *restrict s,
+   unigram_t const ngram[],
+   unigram_t val[]) {
+   s->combine (val, ngram);
    update_pstat (&(s->stat), val);
 }
 

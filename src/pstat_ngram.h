@@ -23,7 +23,7 @@ typedef __attribute__ ((nonnull (1)))
 void (*finish_pstat_ngram_t) (pstat_t *restrict stat) ;
 
 typedef __attribute__ ((const, warn_unused_result))
-unigram_t (*pstat_ngram_combine_t) (unigram_t const vals[]) ;
+void (*pstat_ngram_combine_t) (unigram_t val[], unigram_t const vals[]) ;
 
 typedef struct {
    init_pstat_ngram_t    init;
@@ -37,9 +37,11 @@ typedef struct {
 void init_pstat_ngram (pstat_ngram_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
-void update_pstat_ngram (pstat_ngram_t *restrict s,
-   unigram_t const ngram[])
-__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
+void update_pstat_ngram (
+   pstat_ngram_t *restrict s,
+   unigram_t const ngram[],
+   unigram_t val[])
+__attribute__ ((leaf, nonnull (1, 2, 3), nothrow)) ;
 
 void finish_pstat_ngram (pstat_ngram_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
