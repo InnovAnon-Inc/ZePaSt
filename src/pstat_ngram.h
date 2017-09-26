@@ -45,7 +45,7 @@ void finish_pstat_ngram (pstat_ngram_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void ez_pstat_ngram (
-   pstat_ngram_t *restrict s,
+   pstat_t *restrict s,
    unigram_t const vals[], size_t nval, size_t n)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
 
