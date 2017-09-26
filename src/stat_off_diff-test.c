@@ -22,6 +22,7 @@ int main (void) {
    variance_t variance;
    stat_t mean_stat;
    stat_t var_stat;
+   size_t offset = 2;
 
    char const str[] = "Hello, World!";
    unigram_t vals[sizeof (str) * sizeof (char)];
@@ -49,7 +50,7 @@ int main (void) {
    var_stat.update = update_variance;
    var_stat.finish = finish_variance;
    var_stat.stat = &variance;
-   ez_stat_off_diff (&mean_stat, vals, ARRSZ (vals));
+   ez_stat_off_diff (&mean_stat, vals, ARRSZ (vals), offset);
 
 #ifndef NDEBUG
    (void) printf ("sum:%d\n",  (int) (mean.sum));
@@ -60,7 +61,7 @@ int main (void) {
    variance.ct = (double) sum / (double) ARRSZ (vals);
    if (ARRSZ (vals) >= 30) variance.df = ARRSZ (vals) - 1;
    else                    variance.df = ARRSZ (vals);
-   ez_stat_off_diff (&var_stat, vals, ARRSZ (vals));
+   ez_stat_off_diff (&var_stat, vals, ARRSZ (vals), offset);
 
    (void) printf ("variance:%g\n", variance.sum);
    (void) printf ("stddev:%g\n",   variance.res);
