@@ -19,9 +19,9 @@
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   sum_t sum_stat;
+   sum_t sum;
    variance_t variance;
-   stat_t mean_stat;
+   stat_t sum_stat;
    stat_t var_stat;
    size_t offset = 2;
 
@@ -42,15 +42,10 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
-   /*sum_stat.init   = init_sum;
+   sum_stat.init   = init_sum;
    sum_stat.update = update_sum;
    sum_stat.finish = finish_sum;
-   sum_stat.stat   = &sum;*/
-
-   var_stat.init   = init_variance;
-   var_stat.update = update_variance;
-   var_stat.finish = finish_variance;
-   var_stat.stat = &variance;
+   sum_stat.stat   = &sum;
    ez_stat_off_diff (&sum_stat, vals, ARRSZ (vals), offset);
 
 #ifndef NDEBUG
@@ -62,6 +57,10 @@ int main (void) {
    variance.ct = (double) sum / (double) ARRSZ (vals);
    if (ARRSZ (vals) >= 30) variance.df = ARRSZ (vals) - 1;
    else                    variance.df = ARRSZ (vals);
+   var_stat.init   = init_variance;
+   var_stat.update = update_variance;
+   var_stat.finish = finish_variance;
+   var_stat.stat = &variance;
    ez_stat_off_diff (&var_stat, vals, ARRSZ (vals), offset);
 
    (void) printf ("variance:%g\n", variance.sum);
