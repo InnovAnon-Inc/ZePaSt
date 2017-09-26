@@ -62,16 +62,16 @@ void finish_absdev (void *restrict _dest) {
 
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void init_absdev_stat (stat_t *restrict stat, absdev_t *restrict absdev) {
-   s->init   = init_absdev;
-   s->update = update_absdev;
-   s->finish = finish_absdev;
-   s->stat   = absdev;
+   stat->init   = init_absdev;
+   stat->update = update_absdev;
+   stat->finish = finish_absdev;
+   stat->stat   = absdev;
 
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_absdev (
    absdev_t *restrict absdev,
    unigram_t const vals[], size_t nval) {
    stat_t s;
-   init_absdev_stat (&stat, absdev);
+   init_absdev_stat (&s, absdev);
    ez_stat (&s, vals, nval);
 }
