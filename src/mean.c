@@ -66,6 +66,6 @@ void ez_mean (
    mean_t *restrict mean,
    unigram_t const vals[], size_t nval) {
    stat_t s;
-   init_mean_stat (&stat, mean);
+   init_mean_stat (&s, mean);
    ez_stat (&s, vals, nval);
 }
