@@ -12,13 +12,14 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <mean.h>
+/*#include <mean.h>*/
+#include <sum.h>
 #include <variance.h>
 #include <stat_off_diff.h>
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {
-   mean_t mean;
+   sum_t sum;
    variance_t variance;
    stat_t mean_stat;
    stat_t var_stat;
@@ -41,16 +42,16 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
-   mean_stat.init   = init_mean;
-   mean_stat.update = update_mean;
-   mean_stat.finish = finish_mean;
-   mean_stat.stat   = &mean;
+   sum_stat.init   = init_sum;
+   sum_stat.update = update_sum;
+   sum_stat.finish = finish_sum;
+   sum_stat.stat   = &sum;
 
    var_stat.init   = init_variance;
    var_stat.update = update_variance;
    var_stat.finish = finish_variance;
    var_stat.stat = &variance;
-   ez_stat_off_diff (&mean_stat, vals, ARRSZ (vals), offset);
+   ez_stat_off_diff (&sum_stat, vals, ARRSZ (vals), offset);
 
 #ifndef NDEBUG
    (void) printf ("sum:%d\n",  (int) (mean.sum));
