@@ -55,10 +55,10 @@ void finish_mean (void *restrict _dest) {
 
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void init_mean_stat (stat_t *restrict stat, mean_t *restrict mean) {
-   s->init   = init_mean;
-   s->update = update_mean;
-   s->finish = finish_mean;
-   s->stat   = mean;
+   stat->init   = init_mean;
+   stat->update = update_mean;
+   stat->finish = finish_mean;
+   stat->stat   = mean;
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
