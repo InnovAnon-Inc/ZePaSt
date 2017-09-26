@@ -27,6 +27,9 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_mean (void *restrict mean)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void init_mean_stat (stat_t *restrict stat, mean_t *restrict mean)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
+
 void ez_mean (
    mean_t *restrict mean,
    unigram_t const vals[], size_t nval)

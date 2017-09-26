@@ -43,14 +43,19 @@ void finish_sum (void *restrict _dest) {
 #endif
 }
 
+__attribute__ ((leaf, nonnull (1, 2), nothrow))
+void init_sum_stat (stat_t *restrict stat, sum_t *restrict sum) {
+   stat->init   = init_sum;
+   stat->update = update_sum;
+   stat->finish = finish_sum;
+   stat->stat   = sum;
+}
+
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_sum (
    sum_t *restrict sum,
    unigram_t const vals[], size_t nval) {
    stat_t s;
-   s.init   = init_sum;
-   s.update = update_sum;
-   s.finish = finish_sum;
-   s.stat   = sum;
+   init_sum_stat (&s, sum);
    ez_stat (&s, vals, nval);
 }

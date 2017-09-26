@@ -12,7 +12,12 @@ extern "C" {
 #include <stat_off.h>
 
 unigram_t diff_stat_off (unigram_t left, unigram_t right)
-__attribute__ ((const, warn_unused_result)) ;
+__attribute__ ((const, leaf, warn_unused_result)) ;
+
+void init_stat_off_diff (
+   stat_t *restrict stat,
+   stat_off_t *restrict stat_off)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void ez_stat_off_diff (
    stat_t *restrict sum,

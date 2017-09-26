@@ -22,6 +22,9 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_sum (void *restrict sum)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void init_sum_stat (stat_t *restrict stat, sum_t *restrict sum)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
+
 void ez_sum (
    sum_t *restrict sum,
    unigram_t const vals[], size_t nval)

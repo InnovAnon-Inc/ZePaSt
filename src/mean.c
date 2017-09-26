@@ -53,14 +53,19 @@ void finish_mean (void *restrict _dest) {
 #endif
 }
 
+__attribute__ ((leaf, nonnull (1, 2), nothrow))
+void init_mean_stat (stat_t *restrict stat, mean_t *restrict mean) {
+   s->init   = init_mean;
+   s->update = update_mean;
+   s->finish = finish_mean;
+   s->stat   = mean;
+}
+
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_mean (
    mean_t *restrict mean,
    unigram_t const vals[], size_t nval) {
    stat_t s;
-   s.init   = init_mean;
-   s.update = update_mean;
-   s.finish = finish_mean;
-   s.stat   = mean;
+   init_mean_stat (&stat, mean);
    ez_stat (&s, vals, nval);
 }

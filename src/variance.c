@@ -62,14 +62,21 @@ void finish_variance (void *restrict _dest) {
 #endif
 }
 
+__attribute__ ((leaf, nonnull (1, 2), nothrow))
+void init_variance_stat (
+   stat_t *restrict stat, variance_t *restrict variance) {
+   stat->init   = init_variance;
+   stat->update = update_variance;
+   stat->finish = finish_variance;
+   stat->stat   = variance;
+}
+
+
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_variance (
    variance_t *restrict variance,
    unigram_t const vals[], size_t nval) {
    stat_t s;
-   s.init   = init_variance;
-   s.update = update_variance;
-   s.finish = finish_variance;
-   s.stat   = variance;
+   init_variance_stat (&s, variance);
    ez_stat (&s, vals, nval);
 }

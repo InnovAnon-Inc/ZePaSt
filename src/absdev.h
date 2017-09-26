@@ -27,6 +27,9 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_absdev (void *restrict absdev)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void finish_absdev (stat_t *restrict stat, absdev_t *restrict absdev)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
+
 void ez_absdev (
    absdev_t *restrict absdev,
    unigram_t const vals[], size_t nval)

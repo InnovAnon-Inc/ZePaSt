@@ -42,10 +42,11 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
-   sum_stat.init   = init_sum;
+   /*sum_stat.init   = init_sum;
    sum_stat.update = update_sum;
    sum_stat.finish = finish_sum;
-   sum_stat.stat   = &sum;
+   sum_stat.stat   = &sum;*/
+   init_sum_stat (&sum_stat, &sum);
    ez_stat_off_diff (&sum_stat, vals, ARRSZ (vals), offset);
 
 #ifndef NDEBUG
@@ -57,10 +58,11 @@ int main (void) {
    variance.ct = (double) sum / (double) ARRSZ (vals);
    if (ARRSZ (vals) >= 30) variance.df = ARRSZ (vals) - 1;
    else                    variance.df = ARRSZ (vals);
-   var_stat.init   = init_variance;
+   /*var_stat.init   = init_variance;
    var_stat.update = update_variance;
    var_stat.finish = finish_variance;
-   var_stat.stat = &variance;
+   var_stat.stat = &variance;*/
+   init_variance_stat (&var_stat, &variance);
    ez_stat_off_diff (&var_stat, vals, ARRSZ (vals), offset);
 
    (void) printf ("variance:%g\n", variance.sum);

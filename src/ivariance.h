@@ -30,6 +30,10 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_ivariance (void *restrict ivariance)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void init_ivariance_stat (
+   stat_t *restrict stat, ivariance_t *restrict ivariance)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
+
 void ez_ivariance (
    ivariance_t *restrict ivariance,
    unigram_t const vals[], size_t nval)

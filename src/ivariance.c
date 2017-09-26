@@ -61,14 +61,20 @@ void finish_ivariance (void *restrict _dest) {
 #endif
 }
 
+__attribute__ ((leaf, nonnull (1, 2), nothrow))
+void init_ivariance_stat (
+   stat_t *restrict stat, ivariance_t *restrict ivariance) {
+   s->init   = init_ivariance;
+   s->update = update_ivariance;
+   s->finish = finish_ivariance;
+   s->stat   = ivariance;
+}
+
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_ivariance (
    ivariance_t *restrict ivariance,
    unigram_t const vals[], size_t nval) {
    stat_t s;
-   s.init   = init_ivariance;
-   s.update = update_ivariance;
-   s.finish = finish_ivariance;
-   s.stat   = ivariance;
+   init_ivariance_stat (&s, ivariance);
    ez_stat (&s, vals, nval);
 }

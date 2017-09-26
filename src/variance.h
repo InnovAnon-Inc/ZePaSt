@@ -27,6 +27,10 @@ __attribute__ ((leaf, nonnull (1), nothrow)) ;
 void finish_variance (void *restrict variance)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
+void init_variance_stat (
+   stat_t *restrict stat, variance_t *restrict variance)
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
+
 void ez_variance (
    variance_t *restrict variance,
    unigram_t const vals[], size_t nval)
