@@ -22,7 +22,7 @@ libstat_off_diff_la_LIBADD = libstat_off.la libstat.la -lm
 include_HEADERS += stat_off_diff.h
 bin_PROGRAMS += stat_off_diff-test
 stat_off_diff_test_SOURCES = stat_off_diff-test.c
-stat_off_diff_test_LDADD = libstat_off_diff.la libstat_off.la libstat.la -lm
+stat_off_diff_test_LDADD = libstat_off_diff.la libstat_off.la libstat.la libmean.la libsum.la libvariance.la -lm
 
 lib_LTLIBRARIES += libpstat.la
 libpstat_la_SOURCES = pstat.c

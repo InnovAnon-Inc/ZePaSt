@@ -12,6 +12,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <mean.h>
+#include <variance.h>
 #include <stat_off_diff.h>
 
 __attribute__ ((nothrow, warn_unused_result))
