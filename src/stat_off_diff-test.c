@@ -42,10 +42,10 @@ int main (void) {
          (int) (vals[vi]), (char) (vals[vi])); fflush (stdout);
 #endif
    }
-   sum_stat.init   = init_sum;
+   /*sum_stat.init   = init_sum;
    sum_stat.update = update_sum;
    sum_stat.finish = finish_sum;
-   sum_stat.stat   = &sum;
+   sum_stat.stat   = &sum;*/
 
    var_stat.init   = init_variance;
    var_stat.update = update_variance;
