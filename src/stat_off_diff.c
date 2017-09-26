@@ -28,5 +28,5 @@ void ez_stat_off_diff (
    s.finish = finish_stat_off_diff;*/
    s.stat   = stat;
    s.diff   = diff_stat_off;
-   ez_stat_off (&s, vals, nval);
+   ez_stat_off (&s, vals, nval, offset);
 }
