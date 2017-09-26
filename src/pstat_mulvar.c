@@ -35,7 +35,7 @@ void ez_pstat_mulvar (
    unigram_t const *restrict vals[], size_t nval,
    unigram_t vars[], size_t nvar) {
    size_t vali, vari;
-   pstat_t s;
+   pstat_mulvar_t s;
    s.stat = stat;
    /*s->init   = init_pstat_mulvar;
    s->update = update_pstat_mulvar;
