@@ -14,7 +14,16 @@ lib_LTLIBRARIES += libstat_off.la
 libstat_off_la_SOURCES = stat_off.c
 libstat_off_la_LIBADD = libstat.la -lm
 include_HEADERS += stat_off.h
-#bin_PROGRAMS += stat_off-test
+bin_PROGRAMS += stat_off-test
+#stat_off_test_SOURCES = stat_off-test.c
+
+lib_LTLIBRARIES += libstat_off_diff.la
+libstat_off_diff_la_SOURCES = stat_off_diff.c
+libstat_off_diff_la_LIBADD = libstat_off.la libstat.la -lm
+include_HEADERS += stat_off_diff.h
+bin_PROGRAMS += stat_off_diff-test
+stat_off_diff_test_SOURCES = stat_diff_off-test.c
+stat_off_diff_test_LDADD = libstat_off_diff.la libstat_off.la libstat.la -lm
 
 lib_LTLIBRARIES += libpstat.la
 libpstat_la_SOURCES = pstat.c
@@ -39,6 +48,8 @@ libzepast_la_SOURCES = zepast.c stats.c
 libzepast_la_LIBADD = libstat.la libpstat.la -lm
 include_HEADERS += zepast.h stats.h
 bin_PROGRAMS += zepast
+zepast_SOURCES = main.c
+zepast_LDADD = libzepast.la libstat.la libmean.la libvariance.la libabsdev.la -lm
 
 lib_LTLIBRARIES += libsum.la
 libsum_la_SOURCES = sum.c
@@ -83,9 +94,6 @@ absdev_LDADD = libzepast.la libstat.la libabsdev.la libmean.la libsum.la -lm
 
 # variance/stddev
 # absdev/MAD
-
-zepast_SOURCES = main.c
-zepast_LDADD = libzepast.la libstat.la libmean.la libvariance.la libabsdev.la -lm
 
 #stat_test_SOURCES = stat-test.c
 #stat_test_LDADD = libzepast.la libstat.la libmean.la libvariance.la libabsdev.la -lm
