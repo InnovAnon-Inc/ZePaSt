@@ -24,6 +24,11 @@ bin_PROGRAMS += stat_off_diff-test
 stat_off_diff_test_SOURCES = stat_off_diff-test.c
 stat_off_diff_test_LDADD = libstat_off_diff.la libstat_off.la libstat.la libmean.la libsum.la libvariance.la -lm
 
+# TODO libdstat (i.e., doubles as unigrams)
+# TODO libdstat_ngram (i.e., able to represent RGB values and such)
+
+# TODO libnstat (i.e., void * as unigram, size_t bytesz, use memcpy; see CAQ)
+
 lib_LTLIBRARIES += libpstat.la
 libpstat_la_SOURCES = pstat.c
 libpstat_la_LIBADD = -lm
@@ -42,11 +47,23 @@ libpstat_ngram_la_LIBADD = libpstat.la -lm
 include_HEADERS += pstat_ngram.h
 #bin_PROGRAMS += pstat_ngram-test
 
+# TODO libpstat_ngram_off.la
+# i.e., differences of ngramgs at different offsets
+
 lib_LTLIBRARIES += libpstat_mulvar.la
 libpstat_mulvar_la_SOURCES = pstat_mulvar.c
 libpstat_mulvar_la_LIBADD = libpstat.la -lm
 include_HEADERS += pstat_mulvar.h
 #bin_PROGRAMS += pstat_mulvar-test
+
+# TODO libpstat_mulvar_off.la
+# i.e., multivariate analysis of differences of unigrams at different offsets
+
+# TODO libpstat_mulvar_ngram.la
+# i.e., multivariate analysis of ngrams
+
+# TODO libpstat_mulvar_ngram_off.la
+# i.e., multivariate analysis of differences of ngrams at different offsets
 
 lib_LTLIBRARIES += libzepast.la
 libzepast_la_SOURCES = zepast.c stats.c
