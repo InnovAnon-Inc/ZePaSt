@@ -15,8 +15,9 @@
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_stat_off (stat_off_t *restrict s) {
-   init_stat (&(s->stat));
+   /*init_stat (&(s->stat));*/
    /*s->init (&(s->stat));*/
+   init_stat (s->stat);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
@@ -25,15 +26,17 @@ void update_stat_off (stat_off_t *restrict s,
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
    unigram_t val = s->diff (left, right);
-   update_stat (&(s->stat), val);
+   /*update_stat (&(s->stat), val);*/
    /*s->update (&(s->stat), val));*/
+   update_stat (s->stat, val);
 	#pragma GCC diagnostic pop
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_stat_off (stat_off_t *restrict s) {
-   finish_stat (&(s->stat));
+   /*finish_stat (&(s->stat));*/
    /*s->finish (&(s->stat));*/
+   finish_stat (s->stat);
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
