@@ -22,7 +22,7 @@ void (*update_pstat_mulvar_t) (pstat_t *restrict stat, unigram_t const vals[]) ;
 typedef __attribute__ ((nonnull (1)))
 void (*finish_pstat_mulvar_t) (pstat_t *restrict stat) ;
 
-typedef __attribute__ ((const, leaf, warn_unused_result))
+typedef __attribute__ ((const, nonnull (1), warn_unused_result))
 unigram_t (*pstat_mulvar_combine_t) (unigram_t const vals[]) ;
 
 typedef struct {
