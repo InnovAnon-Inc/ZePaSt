@@ -40,10 +40,10 @@ void ez_pstat_ngram (
    s->finish = finish_pstat_ngram;*/
    pstat_ngram_t s;
    s.stat = stat;
-   init_pstat_ngram (s);
+   init_pstat_ngram (&s);
    /* n must evenly divide nval */
    for (vi = 0; vi != nval - n; vi += n) {
-      update_pstat_ngram (s, vals + vi);
+      update_pstat_ngram (&s, vals + vi);
       /*stat_ngram_update (vals + vi, n);*/
       /*for (vj = 0; vj != n; vj++)
          update_stat (s, vals[vi + vj]);*/
@@ -51,5 +51,5 @@ void ez_pstat_ngram (
    /* otherwise */
    /*for ( ;      vi != nval;     vi++)
       update_stat (s, vals[vi]);*/
-   finish_pstat_ngram (s);
+   finish_pstat_ngram (&s);
 }
