@@ -66,6 +66,7 @@ void init_absdev_stat (stat_t *restrict stat, absdev_t *restrict absdev) {
    stat->update = update_absdev;
    stat->finish = finish_absdev;
    stat->stat   = absdev;
+}
 
 __attribute__ ((nonnull (1, 2), nothrow))
 void ez_absdev (
