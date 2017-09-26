@@ -15,6 +15,10 @@
 
 __attribute__ ((const, warn_unused_result))
 unigram_t diff_stat_off (unigram_t left, unigram_t right) {
+#ifndef NDEBUG
+   printf ("left :%d\n", (int) left); fflush (stdout);
+   printf ("right:%d\n", (int) right); fflush (stdout);
+#endif
    return (unigram_t) (right - left);
 }
 
