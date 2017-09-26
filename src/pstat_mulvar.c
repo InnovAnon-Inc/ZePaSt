@@ -15,18 +15,18 @@
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void init_pstat_mulvar (pstat_mulvar_t *restrict s) {
-   init_pstat (s->stat);
+   init_pstat (&(s->stat));
 }
 
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
-void update_pstat_mulvar (pstat_mulvar_t *restrict s, unigram_t const ngram[]) {
-   ngram_t val = s->combine (ngram);
-   update_pstat (s->stat, val);
+void update_pstat_mulvar (pstat_mulvar_t *restrict s, unigram_t const val[]) {
+   /*ngram_t val = s->combine (ngram);*/
+   update_pstat (&(s->stat), val);
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
 void finish_pstat_mulvar (pstat_mulvar_t *restrict s) {
-   finish_pstat (s->stat);
+   finish_pstat (&(s->stat));
 }
 
 __attribute__ ((nonnull (1, 2, 4), nothrow))
