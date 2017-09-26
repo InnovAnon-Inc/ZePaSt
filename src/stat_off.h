@@ -30,7 +30,7 @@ typedef struct {
    /*init_stat_off_t    init;
    update_stat_off_t  update;
    finish_stat_off_t  finish;*/
-   stat_t              stat;
+   stat_t *restrict  stat;
    /*void *restrict stat;*/
    stat_off_diff_t    diff;
 } stat_off_t;
