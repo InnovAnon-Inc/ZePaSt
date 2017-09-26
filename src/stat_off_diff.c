@@ -15,7 +15,7 @@
 
 __attribute__ ((const, warn_unused_result))
 unigram_t diff_stat_off (unigram_t left, unigram_t right) {
-   return right - left;
+   return (unigram_t) (right - left);
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
