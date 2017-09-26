@@ -53,7 +53,7 @@ void ez_pstat_off (
       /* it's up to you to make sure you don't overlap your memory addresses */
       val[0] = vals[vi];
       val[1] = vals[vi + offset];
-      update_pstat_off (s, vals);
+      update_pstat_off (s, val);
 	#pragma GCC diagnostic pop
       /*update_stat (s, vals[vi]);*/
    }
