@@ -38,8 +38,8 @@ void init_pstat_mulvar (pstat_mulvar_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 void update_pstat_mulvar (pstat_mulvar_t *restrict s,
-   unigram_t left, unigram_t right)
-__attribute__ ((leaf, nonnull (1), nothrow)) ;
+   unigram_t const vars[])
+__attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void finish_pstat_mulvar (pstat_mulvar_t *restrict s)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
