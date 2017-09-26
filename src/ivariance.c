@@ -64,10 +64,10 @@ void finish_ivariance (void *restrict _dest) {
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void init_ivariance_stat (
    stat_t *restrict stat, ivariance_t *restrict ivariance) {
-   s->init   = init_ivariance;
-   s->update = update_ivariance;
-   s->finish = finish_ivariance;
-   s->stat   = ivariance;
+   stat->init   = init_ivariance;
+   stat->update = update_ivariance;
+   stat->finish = finish_ivariance;
+   stat->stat   = ivariance;
 }
 
 __attribute__ ((nonnull (1, 2), nothrow))
