@@ -123,4 +123,8 @@ absdev_LDADD = libzepast.la libstat.la libabsdev.la libmean.la libsum.la -lm
 # trololol
 #dist_doc_DATA += src/Makefile.am
 
+
 AM_CPPFLAGS = -D__STDC_INT64__
+AM_CPPFLAGS += -I $(srcdir)/../glitter/src
+AM_CPPFLAGS += -I $(srcdir)/../iSqrt/src
+
