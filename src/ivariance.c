@@ -78,3 +78,14 @@ void ez_ivariance (
    init_ivariance_stat (&s, ivariance);
    ez_stat (&s, vals, nval);
 }
+
+__attribute__ ((nonnull (3), nothrow, pure, warn_unused_result))
+double ezr_ivariance (
+   unigram_t ct, size_t df,
+   unigram_t const vals[], size_t nval) {
+   ivariance_t ivariance;
+   ivariance.ct = ct;
+   ivariance.df = df;
+   ez_ivariance (&ivariance, vals, nval);
+   return ivariance.res;
+}

@@ -35,6 +35,9 @@ void ez_absdev (
    unigram_t const vals[], size_t nval)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
 
+double ezr_absdev (double ct, unigram_t const vals[], size_t nval)
+__attribute__ ((nonnull (2), nothrow, pure, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif

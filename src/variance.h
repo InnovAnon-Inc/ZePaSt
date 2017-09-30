@@ -36,6 +36,11 @@ void ez_variance (
    unigram_t const vals[], size_t nval)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
 
+double ezr_variance (
+   double ct, size_t df,
+   unigram_t const vals[], size_t nval)
+__attribute__ ((nonnull (3), nothrow, pure, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif

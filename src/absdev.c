@@ -76,3 +76,11 @@ void ez_absdev (
    init_absdev_stat (&s, absdev);
    ez_stat (&s, vals, nval);
 }
+
+__attribute__ ((nonnull (2), nothrow, pure, warn_unused_result))
+double ezr_absdev (double ct, unigram_t const vals[], size_t nval) {
+   absdev_t absdev;
+   absdev.ct = ct;
+   ez_absdev (&absdev, vals, nval);
+   return absdev.res;
+}

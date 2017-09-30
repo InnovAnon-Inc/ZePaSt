@@ -69,3 +69,11 @@ void ez_mean (
    init_mean_stat (&s, mean);
    ez_stat (&s, vals, nval);
 }
+
+__attribute__ ((nonnull (1), nothrow, pure, warn_unused_result))
+double ezr_mean (
+   unigram_t const vals[], size_t nval) {
+   mean_t mean;
+   ez_mean (&mean, vals, nval);
+   return mean.res;
+}

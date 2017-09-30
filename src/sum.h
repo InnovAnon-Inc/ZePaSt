@@ -30,6 +30,9 @@ void ez_sum (
    unigram_t const vals[], size_t nval)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
 
+sum_t ezr_sum (unigram_t const vals[], size_t nval)
+__attribute__ ((nonnull (1), nothrow, pure, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif

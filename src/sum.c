@@ -59,3 +59,10 @@ void ez_sum (
    init_sum_stat (&s, sum);
    ez_stat (&s, vals, nval);
 }
+
+__attribute__ ((nonnull (1), nothrow, pure, warn_unused_result))
+sum_t ezr_sum (unigram_t const vals[], size_t nval) {
+   sum_t sum;
+   ez_sum (&sum, vals, nval);
+   return sum;
+}

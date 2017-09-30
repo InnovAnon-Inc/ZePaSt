@@ -80,3 +80,15 @@ void ez_variance (
    init_variance_stat (&s, variance);
    ez_stat (&s, vals, nval);
 }
+
+__attribute__ ((nonnull (3), nothrow, pure, warn_unused_result))
+double ezr_variance (
+   double ct, size_t df,
+   unigram_t const vals[], size_t nval) {
+   variance_t variance;
+   variance.ct = ct;
+   variance.df = df;
+   ez_variance (&variance, vals, nval);
+   return variance.res;
+}
+
