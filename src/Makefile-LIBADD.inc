@@ -23,6 +23,6 @@ LIBVARIANCE_LIBADD = libstat.la $(LIBSTAT_LIBADD)
 
 LIBIVARIANCE_LIBADD  = libstat.la $(LIBSTAT_LIBADD)
 include $(top_srcdir)/iSqrt/src/Makefile-LIBADD.inc
-LIBIVARIANCE_LIBADD += ../iSqrt/src/.libs/libisqrt.la
+LIBIVARIANCE_LIBADD += ../iSqrt/src/.libs/libisqrt.la $(LIBISQRT_LIBADD)
 
 LIBABSDEV_LIBADD = libstat.la $(LIBSTAT_LIBADD)
