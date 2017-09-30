@@ -1,12 +1,15 @@
 # ZePaSt
 Ze(ro) Pa(ss) St(atistics) (C Library):
+==========
 "Buy one, get the rest free (terms and conditions may apply)"
+
 ----------
 Computational statistics in the style of SCEADAN,
 except without all those awful #ifdefs I added :/
 
 (i.e., it *should* be bigger, better, faster #else
 possibly more or less readable #endif)
+
 ----------
 RN the main focus is interleaving loop bodies.
 - Suppose our input vector is length N
@@ -27,6 +30,7 @@ so computations can be done in sublinear time without loss of data.
 
 And then we'll add random sampling for sub-sublinear time,
 because no large software system is complete without loss of data.
+
 ----------
 TODO
 - variable-length n-grams
