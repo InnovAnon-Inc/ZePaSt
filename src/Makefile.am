@@ -1,3 +1,11 @@
+AM_CPPFLAGS = -D__STDC_INT64__
+
+SUBDIRS = ../glitter
+AM_CPPFLAGS += -I ../glitter/src
+
+SUBDIRS += ../iSqrt
+AM_CPPFLAGS += -I ../iSqrt/src
+
 lib_LTLIBRARIES =
 include_HEADERS =
 bin_PROGRAMS    =
@@ -130,11 +138,3 @@ absdev_test_LDADD = libabsdev.la $(LIBABSDEV_LIBADD) libmean.la $(LIBMEAN_LIBADD
 
 # trololol
 #dist_doc_DATA += src/Makefile.am
-
-AM_CPPFLAGS = -D__STDC_INT64__
-
-SUBDIRS = ../glitter
-AM_CPPFLAGS += -I ../glitter/src
-
-SUBDIRS += ../iSqrt
-AM_CPPFLAGS += -I ../iSqrt/src
