@@ -99,11 +99,11 @@ variance_LDADD = libzepast.la libstat.la libvariance.la libsum.la -lm
 
 lib_LTLIBRARIES += libivariance.la
 libivariance_la_SOURCES = ivariance.c
-libivariance_la_LIBADD = libzepast.la libstat.la -lisqrt -lm
+libivariance_la_LIBADD = libzepast.la libstat.la -L $(srcdir)/../glitter/src libisqrt.la -lm
 include_HEADERS += ivariance.h
 bin_PROGRAMS += ivariance
 ivariance_SOURCES = ivariance-test.c
-ivariance_LDADD = libzepast.la libstat.la libivariance.la -lisqrt libsum.la -lm
+ivariance_LDADD = libzepast.la libstat.la libivariance.la -L $(srcdir)/../glitter/src libisqrt.la libsum.la -lm
 
 lib_LTLIBRARIES += libabsdev.la
 libabsdev_la_SOURCES = absdev.c
