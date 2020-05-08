@@ -1,4 +1,4 @@
-include $(top_srcdir)/iSqrt/src/Makefile-LIBADD.inc
+#include $(top_srcdir)/iSqrt/src/Makefile-LIBADD.inc
 
 LIBSTAT_LIBADD = -lm
 
