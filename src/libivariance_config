@@ -2,5 +2,6 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo `libstat_config --libs` -lisqrt `libisqrt_config --libs`
+#echo `libstat_config --libs` -lisqrt `libisqrt_config --libs`
+echo -lstat `libstat_config --libs` -lisqrt `libisqrt_config --libs`
 

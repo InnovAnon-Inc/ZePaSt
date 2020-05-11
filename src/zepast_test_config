@@ -1,0 +1,6 @@
+#! /bin/bash
+set -eu
+[ $# -eq 1 ]
+[ $1 == --libs ]
+echo `libzepast_config --libs` `libmean_config --libs` `libvariance_config --libs` `libabsdev_config --libs`
+

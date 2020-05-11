@@ -29,41 +29,75 @@ AC_CHECK_LIB([thpool],[thpool_init,thpool_add_work,thpool_wait,thpool_pause,thpo
 LIBPSTAT_LIBADD="`PATH=src:$PATH libpstat_config --libs`"
 AC_SUBST(LIBPSTAT_LIBADD)
 
-LIBPSTAT_OFF_LIBADD="libpstat.la `PATH=src:$PATH libpstat_config --libs`"
+#LIBPSTAT_OFF_LIBADD="libpstat.la `PATH=src:$PATH libpstat_config --libs`"
+LIBPSTAT_OFF_LIBADD="`PATH=src:$PATH libpstat_config --libs`"
 AC_SUBST(LIBPSTAT_OFF_LIBADD)
 
 LIBSTAT_LIBADD="`PATH=src:$PATH libstat_config --libs`"
 AC_SUBST(LIBSTAT_LIBADD)
 
-LIBSTAT_OFF_LIBADD="libstat.la `PATH=src:$PATH libstat_off_config --libs`"
+#LIBSTAT_OFF_LIBADD="libstat.la `PATH=src:$PATH libstat_off_config --libs`"
+LIBSTAT_OFF_LIBADD="`PATH=src:$PATH libstat_off_config --libs`"
 AC_SUBST(LIBSTAT_OFF_LIBADD)
 
-LIBSTAT_OFF_DIFF_LIBADD="libstat_off.la `PATH=src:$PATH libstat_off_diff_config --libs`"
+#LIBSTAT_OFF_DIFF_LIBADD="libstat_off.la `PATH=src:$PATH libstat_off_diff_config --libs`"
+LIBSTAT_OFF_DIFF_LIBADD="`PATH=src:$PATH libstat_off_diff_config --libs`"
 AC_SUBST(LIBSTAT_OFF_DIFF_LIBADD)
 
-LIBSUM_LIBADD="libstat.la `PATH=src:$PATH libsum_config --libs`"
+#LIBSUM_LIBADD="libstat.la `PATH=src:$PATH libsum_config --libs`"
+LIBSUM_LIBADD="`PATH=src:$PATH libsum_config --libs`"
 AC_SUBST(LIBSUM_LIBADD)
 
-LIBPSTAT_NGRAM_LIBADD="libpstat.la `PATH=src:$PATH libpstat_ngram_config --libs`"
+#LIBPSTAT_NGRAM_LIBADD="libpstat.la `PATH=src:$PATH libpstat_ngram_config --libs`"
+LIBPSTAT_NGRAM_LIBADD="`PATH=src:$PATH libpstat_ngram_config --libs`"
 AC_SUBST(LIBPSTAT_NGRAM_LIBADD)
 
-LIBPSTAT_MULVAR_LIBADD="libpstat.la `PATH=src:$PATH libpstat_mulvar_config --libs`"
+#LIBPSTAT_MULVAR_LIBADD="libpstat.la `PATH=src:$PATH libpstat_mulvar_config --libs`"
+LIBPSTAT_MULVAR_LIBADD="`PATH=src:$PATH libpstat_mulvar_config --libs`"
 AC_SUBST(LIBPSTAT_MULVAR_LIBADD)
 
-LIBZEPAST_LIBADD="libstat.la libpstat.la `PATH=src:$PATH libzepast_config --libs`"
+#LIBZEPAST_LIBADD="libstat.la libpstat.la `PATH=src:$PATH libzepast_config --libs`"
+LIBZEPAST_LIBADD="`PATH=src:$PATH libzepast_config --libs`"
 AC_SUBST(LIBZEPAST_LIBADD)
 
-LIBMEAN_LIBADD="libsum.la `PATH=src:$PATH libmean_config --libs`"
+#LIBMEAN_LIBADD="libsum.la `PATH=src:$PATH libmean_config --libs`"
+LIBMEAN_LIBADD="`PATH=src:$PATH libmean_config --libs`"
 AC_SUBST(LIBMEAN_LIBADD)
 
-LIBVARIANCE_LIBADD="libstat.la `PATH=src:$PATH libvariance_config --libs`"
+#LIBVARIANCE_LIBADD="libstat.la `PATH=src:$PATH libvariance_config --libs`"
+LIBVARIANCE_LIBADD="`PATH=src:$PATH libvariance_config --libs`"
 AC_SUBST(LIBVARIANCE_LIBADD)
 
-LIBABSDEV_LIBADD="libstat.la `PATH=src:$PATH libabsdev_config --libs`"
+#LIBABSDEV_LIBADD="libstat.la `PATH=src:$PATH libabsdev_config --libs`"
+LIBABSDEV_LIBADD="`PATH=src:$PATH libabsdev_config --libs`"
 AC_SUBST(LIBABSDEV_LIBADD)
 
-LIBIVARIANCE_LIBADD="libstat.la `PATH=src:$PATH libivariance_config --libs`"
+#LIBIVARIANCE_LIBADD="libstat.la `PATH=src:$PATH libivariance_config --libs`"
+LIBIVARIANCE_LIBADD="`PATH=src:$PATH libivariance_config --libs`"
 AC_SUBST(LIBIVARIANCE_LIBADD)
+
+STAT_OFF_DIFF_TEST_LIBADD="libstat_off_diff.la libmean.la libvariance.la `PATH=src:$PATH stat_off_diff_test_config --libs`"
+AC_SUBST(STAT_OFF_DIFF_TEST_LIBADD)
+
+ZEPAST_TEST_LIBADD="libzepast.la libmean.la libvariance.la libabsdev.la `PATH=src:$PATH zepast_test_config --libs`"
+AC_SUBST(ZEPAST_TEST_LIBADD)
+
+SUM_TEST_LIBADD="libsum.la `PATH=src:$PATH sum_test_config --libs`"
+AC_SUBST(SUM_TEST_LIBADD)
+
+MEAN_TEST_LIBADD="libmean.la `PATH=src:$PATH mean_test_config --libs`"
+AC_SUBST(MEAN_TEST_LIBADD)
+
+VARIANCE_TEST_LIBADD="libvariance.la libmean.la `PATH=src:$PATH variance_test_config --libs`"
+AC_SUBST(VARIANCE_TEST_LIBADD)
+
+IVARIANCE_TEST_LIBADD="libivariance.la libmean.la `PATH=src:$PATH ivariance_test_config --libs`"
+AC_SUBST(IVARIANCE_TEST_LIBADD)
+
+ABSDEV_TEST_LIBADD="libabsdev.la libmean.la `PATH=src:$PATH absdev_test_config --libs`"
+AC_SUBST(ABSDEV_TEST_LIBADD)
+
+
 
 INNOVANON_WARNINGS([])
 

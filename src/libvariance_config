@@ -2,5 +2,6 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-libstat_config --libs
+#libstat_config --libs
+echo -lstat `libstat_config --libs`
 

@@ -1,0 +1,6 @@
+#! /bin/bash
+set -eu
+[ $# -eq 1 ]
+[ $1 == --libs ]
+echo `libstat_off_diff_config --libs` `libstat_off_config --libs` `libmean_config --libs` `libvariance_config --libs`
+
