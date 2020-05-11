@@ -1,1 +1,0 @@
-LIBISQRT_LIBADD = -lm
