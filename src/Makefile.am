@@ -14,7 +14,8 @@ bin_PROGRAMS    =
 
 include_HEADERS += stat-common.h
 
-include Makefile-LIBADD.inc
+#include Makefile-LIBADD.inc
+dist_bin_SCRIPTS = libabsdev_config libivariance_config libmean_config libpstat_config libpstat_mulvar_config libpstat_ngram_config libpstat_off_config libstat_config libstat_off_config libstat_off_diff_config libsum_config libvariance_config libzepast_config
 
 lib_LTLIBRARIES += libstat.la
 libstat_la_LIBADD = $(LIBSTAT_LIBADD)
