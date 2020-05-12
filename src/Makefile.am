@@ -18,21 +18,24 @@ include_HEADERS += stat-common.h
 dist_bin_SCRIPTS = libabsdev_config libivariance_config libmean_config libpstat_config libpstat_mulvar_config libpstat_ngram_config libpstat_off_config libstat_config libstat_off_config libstat_off_diff_config libsum_config libvariance_config libzepast_config
 
 lib_LTLIBRARIES += libstat.la
-libstat_la_LIBADD = $(LIBSTAT_LIBADD)
+libstat_la_LIBADD = @LIBSTAT_LIBADD@
 include_HEADERS += stat.h
 #bin_PROGRAMS += stat-test
 
 lib_LTLIBRARIES += libstat_off.la
-libstat_off_la_LIBADD = $(LIBSTAT_OFF_LIBADD)
+libstat_off_la_LIBADD = @LIBSTAT_OFF_LIBADD@
 include_HEADERS += stat_off.h
 #bin_PROGRAMS += stat_off-test
+EXTRA_libstat_off_la_DEPENDENCIES = libstat.la
 
 lib_LTLIBRARIES += libstat_off_diff.la
-libstat_off_diff_la_LIBADD = $(LIBSTAT_OFF_DIFF_LIBADD)
+libstat_off_diff_la_LIBADD = @LIBSTAT_OFF_DIFF_LIBADD@
+EXTRA_libstat_off_diff_la_DEPENDENCIES = libstat_off.la
 include_HEADERS += stat_off_diff.h
 bin_PROGRAMS += stat_off_diff-test
 #stat_off_diff_test_LDADD = libstat_off_diff.la $(LIBSTAT_OFF_LIBADD) libmean.la $(LIBMEAN_LIBADD) libvariance.la $(LIBVARIANCE_LIBADD)
-stat_off_diff_test_LDADD = $(STAT_OFF_DIFF_TEST_LIBADD)
+stat_off_diff_test_LDADD = @STAT_OFF_DIFF_TEST_LIBADD@
+EXTRA_stat_off_diff_test_DEPENDENCIES = libstat_off_diff.la libmean.la libvariance.la
 
 # TODO libdstat (i.e., doubles as unigrams)
 # TODO libdstat_ngram (i.e., able to represent RGB values and such)
@@ -40,27 +43,30 @@ stat_off_diff_test_LDADD = $(STAT_OFF_DIFF_TEST_LIBADD)
 # TODO libnstat (i.e., void * as unigram, size_t bytesz, use memcpy; see CAQ)
 
 lib_LTLIBRARIES += libpstat.la
-libpstat_la_LIBADD = $(LIBPSTAT_LIBADD)
+libpstat_la_LIBADD = @LIBPSTAT_LIBADD@
 include_HEADERS += pstat.h
 #bin_PROGRAMS += pstat-test
 
 lib_LTLIBRARIES += libpstat_off.la
-libpstat_off_la_LIBADD = $(LIBPSTAT_OFF_LIBADD)
+libpstat_off_la_LIBADD = @LIBPSTAT_OFF_LIBADD@
 include_HEADERS += pstat_off.h
 #bin_PROGRAMS += pstat_off-test
+EXTRA_libpstat_off_la_DEPENDENCIES = libpstat.la
 
 lib_LTLIBRARIES += libpstat_ngram.la
-libpstat_ngram_la_LIBADD = $(LIBPSTAT_NGRAM_LIBADD)
+libpstat_ngram_la_LIBADD = @LIBPSTAT_NGRAM_LIBADD@
 include_HEADERS += pstat_ngram.h
 #bin_PROGRAMS += pstat_ngram-test
+EXTRA_libpstat_ngram_la_DEPENDENCIES = libpstat.la
 
 # TODO libpstat_ngram_off.la
 # i.e., differences of ngramgs at different offsets
 
 lib_LTLIBRARIES += libpstat_mulvar.la
-libpstat_mulvar_la_LIBADD = $(LIBPSTAT_MULVAR_LIBADD)
+libpstat_mulvar_la_LIBADD = @LIBPSTAT_MULVAR_LIBADD@
 include_HEADERS += pstat_mulvar.h
 #bin_PROGRAMS += pstat_mulvar-test
+EXTRA_libpstat_mulvar_la_DEPENDENCIES = libpstat.la
 
 # TODO libpstat_mulvar_off.la
 # i.e., multivariate analysis of differences of unigrams at different offsets
@@ -72,47 +78,59 @@ include_HEADERS += pstat_mulvar.h
 # i.e., multivariate analysis of differences of ngrams at different offsets
 
 lib_LTLIBRARIES += libzepast.la
-libzepast_la_LIBADD = $(LIBZEPAST_LIBADD)
+libzepast_la_LIBADD = @LIBZEPAST_LIBADD@
 include_HEADERS += zepast.h stats.h
+EXTRA_libzepast_la_DEPENDENCIES = libstat.la libpstat.la
 bin_PROGRAMS += zepast-test
 #zepast_test_LDADD = libzepast.la $(LIBZEPAST_LIBADD) libmean.la $(LIBMEAN_LIBADD) libvariance.la $(LIBVARIANCE_LIBADD) libabsdev.la $(LIBABSDEV_LIBADD)
-zepast_test_LDADD = $(ZEPAST_TEST_LIBADD)
+zepast_test_LDADD = @ZEPAST_TEST_LIBADD@
+EXTRA_zepast_test_DEPENDENCIES = libzepast.la libmean.la libvariance.la libabsdev.la
 
 lib_LTLIBRARIES += libsum.la
-libsum_la_LIBADD = $(LIBSTAT_LIBADD)
+libsum_la_LIBADD = @LIBSTAT_LIBADD@
+EXTRA_libsum_la_DEPENDENCIES = libstat.la
 include_HEADERS += sum.h
 bin_PROGRAMS += sum-test
 #sum_test_LDADD = libsum.la $(LIBSUM_LIBADD)
-sum_test_LDADD = $(SUM_TEST_LIBADD)
+sum_test_LDADD = @SUM_TEST_LIBADD@
+EXTRA_sum_test_DEPENDENCIES = libsum.la
 
 lib_LTLIBRARIES += libmean.la
-libmean_la_LIBADD = $(LIBMEAN_LIBADD)
+libmean_la_LIBADD = @LIBMEAN_LIBADD@
+EXTRA_libmean_la_DEPENDENCIES = libsum.la
 include_HEADERS += mean.h
 bin_PROGRAMS += mean-test
 #mean_test_LDADD = libmean.la $(LIBMEAN_LIBADD)
-mean_test_LDADD = $(MEAN_TEST_LIBADD)
+mean_test_LDADD = @MEAN_TEST_LIBADD@
+EXTRA_mean_test_DEPENDENCIES = libmean.la
 
 lib_LTLIBRARIES += libvariance.la
-libvariance_la_LIBADD = $(LIBVARIANCE_LIBADD)
+libvariance_la_LIBADD = @LIBVARIANCE_LIBADD@
+EXTRA_libvariance_la_DEPENDENCIES = libstat.la
 include_HEADERS += variance.h
 bin_PROGRAMS += variance-test
 #variance_test_LDADD = libvariance.la $(LIBVARIANCE_LIBADD) libmean.la $(LIBMEAN_LIBADD)
-variance_test_LDADD = $(VARIANCE_TEST_LIBADD)
+variance_test_LDADD = @VARIANCE_TEST_LIBADD@
+EXTRA_variance_test_DEPENDENCIES = libvariance.la libmean.la
 
 lib_LTLIBRARIES += libivariance.la
-libivariance_la_LIBADD = $(LIBIVARIANCE_LIBADD)
+libivariance_la_LIBADD = @LIBIVARIANCE_LIBADD@
+EXTRA_libivariance_la_DEPENDENCIES = libstat.la
 include_HEADERS += ivariance.h
 bin_PROGRAMS += ivariance-test
 #ivariance_test_LDADD = libivariance.la $(LIBIVARIANCE_LIBADD) libmean.la $(LIBMEAN_LIBADD)
-ivariance_test_LDADD = $(IVARIANCE_TEST_LIBADD)
+ivariance_test_LDADD = @IVARIANCE_TEST_LIBADD@
+EXTRA_ivariance_test_DEPENDENCIES = libivariance.la libmean.la
 
 lib_LTLIBRARIES += libabsdev.la
-libabsdev_la_LIBADD = $(LIBABSDEV_LIBADD)
+libabsdev_la_LIBADD = @LIBABSDEV_LIBADD@
+EXTRA_libabsdev_la_DEPENDENCIES = libstat.la
 include_HEADERS += absdev.h
 bin_PROGRAMS += absdev-test
 # TODO libmedian.la
 #absdev_test_LDADD = libabsdev.la $(LIBABSDEV_LIBADD) libmean.la $(LIBMEAN_LIBADD)
-absdev_test_LDADD = $(ABSDEV_TEST_LIBADD)
+absdev_test_LDADD = @ABSDEV_TEST_LIBADD@
+EXTRA_absdev_test_DEPENDENCIES = libabsdev.la libmean.la
 
 # variance/stddev
 # absdev/MAD

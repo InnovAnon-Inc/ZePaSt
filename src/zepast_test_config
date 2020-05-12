@@ -2,5 +2,8 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo `libzepast_config --libs` `libmean_config --libs` `libvariance_config --libs` `libabsdev_config --libs`
+echo -lzepast   `libzepast_config --libs`   \
+     -lmean     `libmean_config --libs`     \
+     -lvariance `libvariance_config --libs` \
+     -labsdev   `libabsdev_config --libs`
 

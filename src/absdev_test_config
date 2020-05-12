@@ -2,5 +2,5 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo `libabsdev_config --libs` `libmean_config --libs`
+echo -labsdev `libabsdev_config --libs` -lmean `libmean_config --libs`
 

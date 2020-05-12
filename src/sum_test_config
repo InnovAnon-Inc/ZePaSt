@@ -2,5 +2,5 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-libsum_config --libs
+echo -lsum `libsum_config --libs`
 

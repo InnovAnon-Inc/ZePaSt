@@ -2,5 +2,5 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo `libivariance_config --libs` `libmean_config --libs`
+echo -livariance `libivariance_config --libs` -lmean `libmean_config --libs`
 

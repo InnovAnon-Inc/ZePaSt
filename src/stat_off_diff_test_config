@@ -2,5 +2,8 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo `libstat_off_diff_config --libs` `libstat_off_config --libs` `libmean_config --libs` `libvariance_config --libs`
+echo -lstat_off_diff `libstat_off_diff_config --libs` \
+     -lstat_off      `libstat_off_config --libs`      \
+     -lmean          `libmean_config --libs`          \
+     -lvariance      `libvariance_config --libs`
 
