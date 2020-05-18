@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+zepast_utility=zepast-test
+
+Name: @PACKAGE_NAME@-zepast test
+Description: zepast library test application
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lzepast -lstats -lstat -lmean -lvariance -labsdev
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+

@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+ivariance_utility=ivariance-test
+
+Name: @PACKAGE_NAME@-ivariance test
+Description: ivariance library test application
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -livariance -lstat -lsum
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private: libisqrt
+

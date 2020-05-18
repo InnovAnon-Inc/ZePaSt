@@ -1,0 +1,16 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+absdev_utility=absdev-test
+
+Name: @PACKAGE_NAME@-absdev test
+Description: absdev library test application
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -labsdev -lstat -lmean -lsum
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+Libs.private: @M_CFLAGS@ @M_LIBS@
+

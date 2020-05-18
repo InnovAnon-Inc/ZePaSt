@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+stat_off_diff_utility=stat_off_diff-test
+
+Name: @PACKAGE_NAME@-stat_off_diff test
+Description: stat_off_diff library test application
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lstat_off_diff -lstat_off -lstat -lmean -lvariance -lsum
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+
