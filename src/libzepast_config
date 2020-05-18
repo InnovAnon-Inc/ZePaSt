@@ -1,7 +1,0 @@
-#! /bin/bash
-set -eu
-[ $# -eq 1 ]
-[ $1 == --libs ]
-#echo `libstat_config --libs` `libpstat_config --libs`
-echo -lstat `libstat_config --libs` -lpstat `libpstat_config --libs`
-
