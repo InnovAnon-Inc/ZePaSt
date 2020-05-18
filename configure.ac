@@ -21,13 +21,13 @@ AC_CONFIG_FILES([
  src/libsum.pc
  src/libvariance.pc
  src/libzepast.pc
- src/absdev_test.pc.in
- src/ivariance_test.pc.in
- src/mean_test.pc.in
- src/stat_off_diff_test.pc.in
- src/sum_test.pc.in
- src/variance_test.pc.in
- src/zepast_test.pc.in
+ src/absdev_test.pc
+ src/ivariance_test.pc
+ src/mean_test.pc
+ src/stat_off_diff_test.pc
+ src/sum_test.pc
+ src/variance_test.pc
+ src/zepast_test.pc
 ])
 
 PKG_PROG_PKG_CONFIG
