@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#pstat_ngram_utility=pstat_ngram-test
+
+Name: @PACKAGE_NAME@-pstat_ngram
+Description: pstat_ngram library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lpstat_ngram -lpstat
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+

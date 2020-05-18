@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#mean_utility=mean-test
+
+Name: @PACKAGE_NAME@-mean
+Description: mean library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lmean -lsum -lstat
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+

@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#pstat_mulvar_utility=pstat_mulvar-test
+
+Name: @PACKAGE_NAME@-pstat_mulvar
+Description: pstat_mulvar library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lpstat_mulvar -pstat
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+

@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#pstat_off_utility=pstat_off-test
+
+Name: @PACKAGE_NAME@-pstat_off
+Description: pstat_off library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lpstat_off -lpstat
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+

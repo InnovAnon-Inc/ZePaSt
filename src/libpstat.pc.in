@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#pstat_utility=pstat-test
+
+Name: @PACKAGE_NAME@-pstat
+Description: pstat library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lpstat
+Cflags: -I${includedir}
+Requires: glitter
+Requires.private:
+
