@@ -28,8 +28,8 @@ EXTRA_libstat_off_diff_la_DEPENDENCIES = libstat_off.la
 include_HEADERS += stat_off_diff.h
 
 bin_PROGRAMS += stat_off_diff-test
-stat_off_diff_test_CPPFLAGS =                                                     $(GLITTER_CFLAGS)
-stat_off_diff_test_LDADD    = -lstat_off_diff -lstat_off -lstat -lmean -lvariance $(GLITTER_LIBS)
+stat_off_diff_test_CPPFLAGS =                                                           $(GLITTER_CFLAGS)
+stat_off_diff_test_LDADD    = -lstat_off_diff -lstat_off -lstat -lmean -lvariance -lsum $(GLITTER_LIBS)
 EXTRA_stat_off_diff_test_DEPENDENCIES = libstat_off_diff.la libmean.la libvariance.la
 
 # TODO libdstat (i.e., doubles as unigrams)
