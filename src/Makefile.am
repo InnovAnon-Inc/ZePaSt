@@ -126,8 +126,8 @@ variance_test_LDADD    = -lsum -lvariance $(GLITTER_LIBS)
 EXTRA_variance_test_DEPENDENCIES = libvariance.la libmean.la
 
 lib_LTLIBRARIES += libivariance.la
-libivariance_CPPFLAGS =                $(GLITTER_CFLAGS)
-libivariance_LIBADD   = -lisqrt -lstat $(GLITTER_LIBS)
+libivariance_la_CPPFLAGS =                $(GLITTER_CFLAGS)
+libivariance_la_LIBADD   = -lisqrt -lstat $(GLITTER_LIBS)
 EXTRA_libivariance_la_DEPENDENCIES = libstat.la
 include_HEADERS += ivariance.h
 
