@@ -132,8 +132,8 @@ EXTRA_libivariance_la_DEPENDENCIES = libstat.la
 include_HEADERS += ivariance.h
 
 bin_PROGRAMS += ivariance-test
-ivariance_test_CPPFLAGS =                            $(GLITTER_CFLAGS)
-ivariance_test_LDADD    = -livariance -lisqrt -lstat $(GLITTER_LIBS)
+ivariance_test_CPPFLAGS =                                  $(GLITTER_CFLAGS)
+ivariance_test_LDADD    = -livariance -lisqrt -lstat -lsum $(GLITTER_LIBS)
 EXTRA_ivariance_test_DEPENDENCIES = libivariance.la libmean.la
 
 lib_LTLIBRARIES += libabsdev.la
