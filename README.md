@@ -57,3 +57,7 @@ TODO
 
 ![Corporate Logo](https://i.imgur.com/UD8y4Is.gif)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/InnovAnon-Inc/ZePaSt/badge)](https://www.codefactor.io/repository/github/InnovAnon-Inc/ZePaSt/)
+
+[![LoC](https://tokei.rs/b1/github/InnovAnon-Inc/ZePaSt/?category=code)](https://github.com/InnovAnon-Inc/ZePaSt/)
+
