@@ -1,16 +1,17 @@
 # ZePaSt
 Ze(ro) Pa(ss) St(atistics) (C Library):
 ==========
-"Buy one, get the rest free (terms and conditions may apply)"
 
+"Buy one, get the rest free (terms and conditions may apply)"
 ----------
+
 Computational statistics in the style of SCEADAN,
 except without all those awful #ifdefs I added :/
 
 (i.e., it *should* be bigger, better, faster #else
 possibly more or less readable #endif)
-
 ----------
+
 RN the main focus is interleaving loop bodies.
 - Suppose our input vector is length N
 - and we are computing M statistics,
@@ -26,14 +27,15 @@ RN the main focus is interleaving loop bodies.
     - update mode
 - N.B., this doesn't decrease the asymptotic complexity,
 but what it does allow for is larger loop bodies for the compiler to unroll.
+(thanks, Dr. Maynard, for teaching Computer Architecture and all those other great classes)
 
 Ideally, we'll add multi-threaded single-pass algorithms,
 so computations can be done in sublinear time without loss of data.
 
 And then we'll add random sampling for sub-sublinear time,
 because no large software system is complete without loss of data.
-
 ----------
+
 TODO
 - variable-length n-grams
 - mean/median files (i.e., compute "average" files of different types)
@@ -43,8 +45,8 @@ TODO
 - statistics on histogram of the histogram ?
 - statistics on derivative of the histogram ?
 - statistics on histogram of the derivative ?
-
 ----------
+
 [![CircleCI](https://img.shields.io/circleci/build/github/InnovAnon-Inc/ZePaSt?color=%23FF1100&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://circleci.com/gh/InnovAnon-Inc/ZePaSt)
 [![Repo Size](https://img.shields.io/github/repo-size/InnovAnon-Inc/ZePaSt?color=%23FF1100&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://github.com/InnovAnon-Inc/ZePaSt)
 [![LoC](https://tokei.rs/b1/github/InnovAnon-Inc/ZePaSt?category=code)](https://github.com/InnovAnon-Inc/ZePaSt)
